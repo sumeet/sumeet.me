@@ -1,1 +1,1 @@
-web: sleep
+web: tail -f /dev/null
