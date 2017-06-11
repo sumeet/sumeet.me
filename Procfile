@@ -1,1 +1,1 @@
-web: cd build && python -m http.server $PORT
+web: ./webserver.sh
