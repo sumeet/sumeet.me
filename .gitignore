@@ -1,3 +1,5 @@
 *.pyc
 .env
 *.swp
+build
+__pycache__
