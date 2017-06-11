@@ -7,6 +7,9 @@ html:
 	cp *.otf build/
 	cp favicon.ico build/
 	cp resume.md build/sumeet.txt
+	# /resume was the URL for my old resume, which is now the whole site. make
+	# it work so old links to it don't 404
+	ln -s . build/resume
 
 open_html:
 	open build/index.html
