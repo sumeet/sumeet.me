@@ -3,7 +3,9 @@ default: html pdf
 html:
 	mkdir -p build
 	./build_html.py > build/index.html
-	cp style.css *.otf build/
+	cp style.css build/
+	cp *.otf build/
+	cp favicon.ico build/
 	cp resume.md build/sumeet.txt
 
 open_html:
