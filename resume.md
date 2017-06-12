@@ -6,8 +6,8 @@ Sumeet Agarwal
 
 Experience
 ----------
-#### **Remind**; San Francisco, CA
-#### *Software Engineer*; 2015 -- Current
+#### **Remind**, San Francisco, CA
+#### *Software Engineer*, 2015 -- Current
 + Programming languages: Ruby, Go, Node, a little frontend JavaScript
 + Hacked a lot on the web API used by the web desktop, Android and iOS apps
 + Built scalable messaging backend used for teacher announcements and chats
@@ -15,8 +15,8 @@ Experience
   school and district leaders
 + Salesforce data loading (again)
 
-#### **Yelp**; San Francisco, CA
-#### *Software Engineer*; 2010 -- 2014
+#### **Yelp**, San Francisco, CA
+#### *Software Engineer*, 2010 -- 2014
 + Programming languages: Python, a little JavaScript
 + Hacked on the Python web backend, mostly rendering HTML pages for a multi-page
   web app. My team built one of the company's first microservices.
@@ -24,8 +24,8 @@ Experience
 + Worked on bulk email infrastructure and performance, Yelp for Business Owners,
   Salesforce data loading
 
-#### **Sogeti**; Dayton, OH
-#### *Consultant --- Corporate IT*; 2009 -- 2010
+#### **Sogeti**, Dayton, OH
+#### *Consultant --- Corporate IT*, 2009 -- 2010
 + Programming languages: Python, JavaScript, a little PHP
 + Rebuilt the company website and implemented a CMS
 + Administered Solaris and Linux servers
@@ -68,7 +68,7 @@ remote HTTP calls.
 
 College
 ---------
-#### Boston University -- Boston, MA; 2008
+#### Boston University -- Boston, MA, 2008
 + B.A. in Computer Science
 
 Before College

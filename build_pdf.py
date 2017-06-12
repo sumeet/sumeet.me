@@ -14,9 +14,24 @@ def cwd():
 
 css = """
 body {
-    font-family: "Graublau Web";
-    font-size: 85%;
+    font-size: 75%;
+    font-family: "Lucida Grande";
+    color: #333333;
+    line-height: 1.5em;
 }
+
+blockquote {
+    margin-left: 0px;
+    font-style: italic;
+    color: #666;
+    font-size: 90%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Graublau Web";
+}
+
+ul { list-style-type: none; }
 
 h1 {
     font-weight: normal;
@@ -26,7 +41,7 @@ h1 {
     margin-bottom: 0.5em;
 }
 
-h2 { font-weight: normal; color: #222222; font-size: 2em; margin-bottom: 0.75em; }
+h2 { font-weight: normal; color: #222222; font-size: 2em; margin-top: 1em; margin-bottom: 0.75em; }
 
 h3 { font-weight: normal; color: #222222; font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
 
