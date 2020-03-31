@@ -28,9 +28,9 @@ publish and get feedback on video game music arrangements.
 Experience
 ----------
 #### **Self**, 2018 - 2019
-Despite the fact that I love that tools for programmers like shells, terminals
-and text editors can make me feel I'm like the character Neo from the Matrix,
-if I really pay attention closely I find them cumbersome to use. I accumulated
+I love that tools for programmers like shells, terminals and text editors can feel
+super productive, allowing chainable commands and seemingly endless customization.
+When I really pay attention closely I find them cumbersome to use. I accumulated
 a lot of ideas about editor UIs, and set off to make a graphical programming
 interface that retains some of that Vim hacker feeling. It is a massive
 undertaking, so I've been taking on some commercial work as a way to stay
@@ -41,7 +41,7 @@ connected to real-world development.
 + Mentoring both college students learning the basics of programming and industry
   professionals trying to learn new tools
 
-#### *Purely personal projects*
+#### *Personal projects*
 + Utility to use iPad as an external display from Linux, development live
   streamed on Twitch.tv
 + A cross-platform multi-system clipboard sharing tool
