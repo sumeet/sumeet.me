@@ -32,16 +32,19 @@ Despite the fact that I love that tools for programmers like shells, terminals
 and text editors can make me feel I'm like the character Neo from the Matrix,
 if I really pay attention closely I find them cumbersome to use. I accumulated
 a lot of ideas about editor UIs, and set off to make a graphical programming
-interface that retains some of that Vim hacker feeling. It is a massive
-undertaking, so I've been taking on some commercial work as a way to stay
-connected to real-world development.
+interface that retains some of that Vim hacker feeling. I think it's possible to
+for an org to be 10 or 100x more productive with the same number of people with
+the right tools.
+
+It is a massive undertaking, so I've been taking on some commercial work as a
+way to stay connected to real-world development.
 
 #### *Freelance work*
 + High performance cryptocurrency related Rust code
 + Mentoring both college students learning the basics of programming and industry
   professionals trying to learn new tools
 
-#### *Purely personal projects*
+#### *Personal projects*
 + Utility to use iPad as an external display from Linux, development live
   streamed on Twitch.tv
 + A cross-platform multi-system clipboard sharing tool
