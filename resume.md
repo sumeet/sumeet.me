@@ -32,9 +32,12 @@ I love that tools for programmers like shells, terminals and text editors can fe
 super productive, allowing chainable commands and seemingly endless customization.
 When I really pay attention closely I find them cumbersome to use. I accumulated
 a lot of ideas about editor UIs, and set off to make a graphical programming
-interface that retains some of that Vim hacker feeling. It is a massive
-undertaking, so I've been taking on some commercial work as a way to stay
-connected to real-world development.
+interface that retains some of that Vim hacker feeling. I think it's possible to
+for an org to be 10 or 100x more productive with the same number of people with
+the right tools.
+
+It is a massive undertaking, so I've been taking on some commercial work as a
+way to stay connected to real-world development.
 
 #### *Freelance work*
 + High performance cryptocurrency related Rust code
