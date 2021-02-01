@@ -5,6 +5,7 @@ html:
 	./build_html.py > build/index.html
 	cp style.css build/
 	cp *.otf build/
+	cp darkreader.js build/
 	cp favicon.ico build/
 	cp resume.md build/sumeet.txt
 	# /resume was the URL for my old resume, which is now the whole site. make
