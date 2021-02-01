@@ -20,7 +20,8 @@ Experience
 ----------
 #### **Self**, 2018 - 2021
 #### *Structued programming environment*
-+ Created a prototype for a non-text based programming language with 30,000 lines of Rust code, ImGui, WebAssembly
++ Created a prototype for a non-text based programming language
++ 30,000 lines of Rust code, ImGui, WebAssembly
 + Was able to solve half of Advent of Code 2020 puzzles. Sample video @ tinyurl.com/maestro-sample
 + Work and research on V2 prototype ongoing
 
