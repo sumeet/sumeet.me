@@ -1,32 +1,34 @@
 Sumeet Agarwal
 ==============
-> + <sumeet.a@gmail.com>
-> + (937) 657-8614
+> + sumeet.a@gmail.com
 
-Skills
-------
 Coding and software engineering
+-------------------------------
 
-+ 13 years experience working with distributed web systems, open source stack
-  (Python, Ruby, PostgreSQL, Node.js, Go, queues, microservices, etc.).
-+ 2 years of freelance experience providing value as a one-person engineering team
-+ 2 years experience building a visual programming environment from scratch: editor,
-  interpreter, type system
-+ Can help with with team project management, estimation and technical mentorship
-+ Very fast at getting up to speed with existing systems, productive on day one
-+ Programming language enthusiast and researcher
++ 13 years experience working with distributed web systems, open source stack 
++ + Python, Ruby, PostgreSQL, Node.js, Go, queues, microservices, etc.
++ 2 years freelance experience providing value as a one-person engineering team
++ + Ops, Design, Frontend, Backend
++ 2 years experience building a visual programming environment from scratch
++ + Rust, Dear ImGui, interpreter, type system
++ Fast at getting up to speed with existing systems, usually productive on day one
++ A clean worker and well-experienced at planning and executing large-scale live migrations and refactors
++ Can organize project planning, communication flow, project estimation and provide technical mentorship
++ Programming language and dev tools researcher
 
 Experience
 ----------
 #### **Self**, 2018 - 2021
+#### *Structued programming environment*
++ Created a prototype for a non-text based programming language with 30,000 lines of Rust code, ImGui, WebAssembly
++ Was able to solve half of Advent of Code 2020 puzzles. Sample video @ tinyurl.com/maestro-sample
++ Work and research on V2 prototype ongoing
+
 #### *Freelance work*
-+ One-person engineering team for startup taking over existing project. Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
++ One-person engineering team for startup taking over existing project
++ + Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
 + High performance cryptocurrency related Rust code
 + Paid coding mentorship for college students and software professionals
-
-#### *CodeMaestro (working title)*
-+ Created a prototype for a visual programming language, 30,000 lines of Rust code, ImGUI, WebAssembly
-+ Sample video @ tinyurl.com/maestro-sample
 
 #### **Remind**, San Francisco, CA
 #### *Product and infrastructure engineer*, 2015 -- 2018
@@ -72,10 +74,10 @@ over the US.
 College and background
 ---------
 #### Boston University -- Boston, MA, 2008
-+ B.A. in Computer Science
++ Received Bachelors in Computer Science
 
 #### Pre-university accomplishments
-+ Worked with a team of volunteers to build VGMix.com, a web community where musicians
++ Worked with a team of volunteers to build VGMix, a web community where musicians
   shared music and feedback
 + Had a complex patch accepted into Adium IM client for auto-away
 + Managed and coded software for large (100+) IRC bot clusters

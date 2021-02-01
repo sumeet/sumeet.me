@@ -5,4 +5,4 @@ def html():
 
 
 def render_markdown(md):
-    return markdown(md, extensions=['smarty'])
+    return markdown(md, extensions=['smarty', 'mdx_urlize'])

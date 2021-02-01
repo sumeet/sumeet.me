@@ -31,7 +31,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Graublau Web";
 }
 
-ul { list-style-type: none; }
+ul { list-style-type: none; margin-left: 0px; padding: 0px; }
+li ul { margin: 0px 1.5em; }
+li { margin-left: 0px; }
 
 h1 {
     font-weight: normal;
@@ -57,5 +59,15 @@ if __name__ == '__main__':
         output_filename = sys.argv[1]
     except IndexError:
         raise "First arg must be a file to write to (e.g. build/sumeet.pdf)"
-    html = HTML(string=resume.html(), base_url=f'file://{cwd()}/')
-    html.write_pdf(output_filename, stylesheets=[CSS(string=css)])
+
+    test_mode = True
+    try:
+        sys.argv[2]
+    except IndexError:
+        test_mode = False
+
+    if test_mode:
+        print(resume.html())
+    else:
+        html = HTML(string=resume.html(), base_url=f'file://{cwd()}/')
+        html.write_pdf(output_filename, stylesheets=[CSS(string=css)])

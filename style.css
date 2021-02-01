@@ -60,7 +60,7 @@ pre, code, tt { font: 1em 'andale mono', 'lucida console', monospace; line-heigh
 
 li ul, li ol { margin: 0 1.5em; }
 
-ul { margin: 0 1.5em 1.5em 1.5em; list-style-type: disc; }
+ul { margin: 0 0 1.5em 0.5em; list-style-type: disc; }
 
 ol { margin: 0 1.5em 1.5em 1.5em; list-style-type: decimal; }
 

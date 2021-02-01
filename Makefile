@@ -1,4 +1,4 @@
-default: html pdf
+default: clean html pdf
 
 html:
 	mkdir -p build
