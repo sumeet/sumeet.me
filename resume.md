@@ -6,11 +6,11 @@ Coding and software engineering
 -------------------------------
 
 + 13 years experience working with distributed web systems, open source stack 
-+ + Python, Ruby, PostgreSQL, Node.js, Go, queues, microservices, etc.
++ Python, Ruby, PostgreSQL, Node.js, Go, queues, microservices, etc.
 + 2 years freelance experience providing value as a one-person engineering team
-+ + Ops, Design, Frontend, Backend
++ Ops, Design, Frontend, Backend
 + 2 years experience building a visual programming environment from scratch
-+ + Rust, Dear ImGui, interpreter, type system
++ Rust, Dear ImGui, interpreter, type system
 + Fast at getting up to speed with existing systems, usually productive on day one
 + A clean worker and well-experienced at planning and executing large-scale live migrations and refactors
 + Can organize project planning, communication flow, project estimation and provide technical mentorship
@@ -26,7 +26,7 @@ Experience
 
 #### *Freelance work*
 + One-person engineering team for startup taking over existing project
-+ + Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
++ Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
 + High performance cryptocurrency related Rust code
 + Paid coding mentorship for college students and software professionals
 
