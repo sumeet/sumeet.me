@@ -42,11 +42,15 @@ Devised several large-scale infrastructure projects, fixing performance issues u
 to a high traffic messaging app with 30 million users, and implemented organization-wide
 changes to significantly reduce the app's error rate.
 
+Ruby, Go, Python, React, Node.JS, RabbitMQ, Redis, PostgreSQL, DynamoDB, statsd
+
 #### **SocialChorus**, San Francisco, CA
 #### *Senior product engineer*, 2015
 Maintained a web-based employee outreach SaaS, used by very large companies like Coca
 Cola and Target, in an XP (eXtreme Programming) environment. Test driven development
 and daily pair programming.
+
+Ruby on Rails, CouchDB, PostgreSQL, Backbone.js
 
 #### **Yelp**, San Francisco, CA
 #### *Software lead*, 2010 -- 2014
@@ -54,6 +58,8 @@ Lead developer on Yelp's consumer line of products, including Yelp Deals, Gift
 Certificates and food delivery. Worked on email deliverability, handling payments,
 large team project coordination, and pioneered more efficient testing and code
 organization methods.
+
+Python, MySQL
 
 #### **Sogeti**, Dayton, OH
 #### *Corporate IT, internal tools*, 2009 -- 2010
@@ -71,15 +77,15 @@ over the US.
   and maintained by a single developer, into a CMS which the marketing department could
   update themselves
 
+Python, Django, PHP
 
-College and background
+Education and background
 ---------
-#### Boston University -- Boston, MA, 2008
-+ Received Bachelors in Computer Science
+#### Boston University, Bachelors in Computer Science -- Boston, MA, 2008
 
 #### Pre-university accomplishments
 + Worked with a team of volunteers to build VGMix, a web community where musicians
-  shared music and feedback
+  shared music and feedback. MySQL, PHP, circa 2003 - 2006
 + Had a complex patch accepted into Adium IM client for auto-away
 + Managed and coded software for large (100+) IRC bot clusters
 + Linux SysAdmin certification at age 14
