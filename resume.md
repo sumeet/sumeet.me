@@ -5,52 +5,28 @@ Sumeet Agarwal
 
 Skills
 ------
-Comfortable in basically any modern programming language, expert knowledge of
-Python and Ruby, and strong in Go, JavaScript and Rust. At companies, I
-typically worked closer to the backend but could pitch in and help out with the
-web, iOS or Android apps if needed.
+Coding and software engineering
 
-Very effective at working with legacy code, including incremental refactoring and
-fostering an environment of viewing legacy or "bad" code in a productive, non-judgmental
-and understanding way.
-
-Can lead large groups of engineers and business people to break down product
-requirements into estimates with milestones.
-
-Love computers, love software. Believe in building the right thing depending on
-the problem, which can often be high quality, solid and clean software. Or
-just good enough slapped-together throw-away code.
-
-I've been programming since high school. I was contributing to open source and
-worked on a team on a very popular Soundcloud-like website for musicians to
-publish and get feedback on video game music arrangements.
++ 13 years experience working with distributed web systems, open source stack
+  (Python, Ruby, PostgreSQL, Node.js, Go, queues, microservices, etc.).
++ 2 years of freelance experience providing value as a one-person engineering team
++ 2 years experience building a visual programming environment from scratch: editor,
+  interpreter, type system
++ Can help with with team project management, estimation and technical mentorship
++ Very fast at getting up to speed with existing systems, productive on day one
++ Programming language enthusiast and researcher
 
 Experience
 ----------
-#### **Self**, 2018 - 2019
-I love that tools for programmers like shells, terminals and text editors can feel
-super productive, allowing chainable commands and seemingly endless customization.
-When I really pay attention closely I find them cumbersome to use. I accumulated
-a lot of ideas about editor UIs, and set off to make a graphical programming
-interface that retains some of that Vim hacker feeling. I think it's possible to
-for an org to be 10 or 100x more productive with the same number of people with
-the right tools.
-
-It is a massive undertaking, so I've been taking on some commercial work as a
-way to stay connected to real-world development.
-
+#### **Self**, 2018 - 2021
 #### *Freelance work*
++ One-person engineering team for startup taking over existing project. Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
 + High performance cryptocurrency related Rust code
-+ Mentoring both college students learning the basics of programming and industry
-  professionals trying to learn new tools
++ Paid coding mentorship for college students and software professionals
 
-#### *Personal projects*
-+ Utility to use iPad as an external display from Linux, development live
-  streamed on Twitch.tv
-+ A cross-platform multi-system clipboard sharing tool
-+ A desktop GUI tool to help with learning foreign languages, combining dictionary
-  lookup and rich flash card creation into a single step, with pronunciation
-  audio, image search and example sentences.
+#### *CodeMaestro (working title)*
++ Created a prototype for a visual programming language, 30,000 lines of Rust code, ImGUI, WebAssembly
++ Sample video @ tinyurl.com/maestro-sample
 
 #### **Remind**, San Francisco, CA
 #### *Product and infrastructure engineer*, 2015 -- 2018
@@ -82,15 +58,15 @@ Worked on the in-house IT team of a 2000+ employee IT consulting firm based all
 over the US.
 
 + Built internal tools like wikis and blogs, so different branches could
-share information with each other
+  share information with each other
 + Administered Linux and Solaris servers
 + Built a internal employee catalog, synchronizing data between Microsoft Exchange
-and Oracle E-Business Suite
+  and Oracle E-Business Suite
 + Implemented a web-based single site authentication system that worked on top
   of Active Directory
 + Rebuilt the company website, which had previously been built in Microsoft Frontpage
-and maintained by a single developer, into a CMS which the marketing department could
-update themselves
+  and maintained by a single developer, into a CMS which the marketing department could
+  update themselves
 
 
 College and background
@@ -98,13 +74,16 @@ College and background
 #### Boston University -- Boston, MA, 2008
 + B.A. in Computer Science
 
-Born and brought up in the USA, living mostly on the east coast. I got my first
-computer when I was 4 from my uncle who was a software engineer, and have been
-enamored by the thing ever since. I learned how to use MS-DOS by watching my
-older cousin, and then began to follow the Internet revolution. Significant
-moments include begging my uncle to drive to Staples to pick up a copy of the
-Windows 95 CD-ROM on release day, meeting a precocious friend who introduced
-me to Linux on the first day of 5th grade, entering high school and finding out
-that the Latin teacher is a Linux nerd, and joining numerous communities via
-IRC (Internet Relay Chat), the old school chat system that Slack is loosely
-modeled after.
+#### Pre-university accomplishments
++ Worked with a team of volunteers to build VGMix.com, a web community where musicians
+  shared music and feedback
++ Had a complex patch accepted into Adium IM client for auto-away
++ Managed and coded software for large (100+) IRC bot clusters
++ Linux SysAdmin certification at age 14
++ Learned to touch-type at 7, 100+ WPM by age 10
++ Became proficient with MS-DOS at age 5 from watching older cousin (1992)
+
+
+Other interests
+---------------
+Running, functional programming, Linux, tiling window managers
