@@ -3,7 +3,7 @@ CairoSVG==2.0.3
 cffi==1.10.0
 cssselect==1.0.1
 html5lib==0.999999999
-lxml==3.8.0
+lxml==4.6.5
 Markdown==2.6.8
 olefile==0.44
 Pillow==4.1.1
