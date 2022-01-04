@@ -5,31 +5,38 @@ Sumeet Agarwal
 Coding and software engineering
 -------------------------------
 
-+ 13 years experience working with distributed web systems, open source stack 
-+ Python, Ruby, PostgreSQL, Node.js, Go, queues, microservices, etc.
-+ 2 years freelance experience providing value as a one-person engineering team
-+ Ops, Design, Frontend, Backend
-+ 2 years experience building a visual programming environment from scratch
-+ Rust, Dear ImGui, interpreter, type system
++ 15 years experience working with distributed web systems, open source stack
++ Both full-time and freelance
++ Polyglot up from x86 ASM to Haskell
++ Expert in Rust, Python, Ruby, Go, JS
 + Fast at getting up to speed with existing systems, usually productive on day one
 + A clean worker and well-experienced at planning and executing large-scale live migrations and refactors
 + Can organize project planning, communication flow, project estimation and provide technical mentorship
 + Programming language and dev tools researcher
++ Aspiring teacher & tutor
 
 Experience
 ----------
 #### **Self**, 2018 - 2021
-#### *Structued programming environment*
+#### *Language research*
 + Created a prototype for a non-text based programming language
 + 30,000 lines of Rust code, ImGui, WebAssembly
-+ Was able to solve half of Advent of Code 2020 puzzles. Sample video @ tinyurl.com/smt-aoc-2020
-+ Work and research on V2 prototype ongoing
++ Was able to solve half of Advent of Code 2020 puzzles in the language. Sample video @ tinyurl.com/smt-aoc-2020
+
++ Language design competitions:
++ langjam0001 Winner: tinyurl.com/smt-jam1
++ langjam0002 Runner-up: tinyurl.com/smt-jam2
+
+#### *Teaching and tutoring*
++ Paid tutoring for 5 software engineers on topics including advanced programming and career
++ Helped a mid-level engineer triple their salary with a 2-month "anti-Cracking the Interview" curriculum
++ Volunteer mentor at Hackbright Academy
 
 #### *Freelance work*
-+ One-person engineering team for startup taking over existing project
++ One-person engineering team for property management startup taking over existing project:
 + Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
-+ High performance cryptocurrency related Rust code
-+ Paid coding mentorship for college students and software professionals
++ Rescued a gardening Kickstarter project with performance and quality issues 1 week before launch:
++ Rails, Stimulus.js
 
 #### **Remind**, San Francisco, CA
 #### *Product and infrastructure engineer*, 2015 -- 2018
@@ -90,9 +97,9 @@ Education and background
 + Managed and coded software for large (100+) IRC bot clusters
 + Linux SysAdmin certification at age 14
 + Learned to touch-type at 7, 100+ WPM by age 10
-+ Became proficient with MS-DOS at age 5 from watching older cousin (1992)
++ Became proficient with MS-DOS at age 5 from watching my cousin
 
 
 Other interests
 ---------------
-Running, functional programming, Linux, tiling window managers
+Running, functional programming, Zachtronics games, Advent of Code, Linux, tiling window managers
