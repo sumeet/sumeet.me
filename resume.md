@@ -1,34 +1,37 @@
 Sumeet Agarwal
 ==============
 > + sumeet.a@gmail.com
+> + https://github.com/sumeet
 
 Coding and software engineering
 -------------------------------
-
 + 15 years experience working with distributed web systems, open source stack
-+ Both full-time and freelance
++ Full-time and freelance
 + Polyglot up from x86 ASM to Haskell
 + Expert in Rust, Python, Ruby, Go, JS
-+ Fast at getting up to speed with existing systems, usually productive on day one
-+ A clean worker and well-experienced at planning and executing large-scale live migrations and refactors
-+ Can organize project planning, communication flow, project estimation and provide technical mentorship
-+ Programming language and dev tools researcher
-+ Aspiring teacher & tutor
++ Fast at getting up to speed with existing systems & reading code, productive on day one
++ A clean and meticulous worker and well-experienced at planning and executing large-scale live migrations and refactors
++ Project leadership, planning, communication flow, project estimation and technical mentorship
+
+Teaching, coaching, mentorship
+------------------------------
++ 2 years teaching experience, 1:1 tutoring, online streams and in-person workshops
++ Children fresh to computing, bootcamp grads looking for work, and senior software engineers who want to improve
++ Am myself a passionate learner and dev tools researcher, always want to know more about how computers work
 
 Experience
 ----------
-#### **Self**, 2018 - 2021
+#### **Self**, 2018 - 2022
 #### *Language research*
-+ Created a prototype for a non-text based programming language
-+ 30,000 lines of Rust code, ImGui, WebAssembly
-+ Was able to solve half of Advent of Code 2020 puzzles in the language. Sample video @ tinyurl.com/smt-aoc-2020
-
++ Created a prototype for a visual programming language, with structured editor
 + Language design competitions:
 + langjam0001 Winner: tinyurl.com/smt-jam1
 + langjam0002 Runner-up: tinyurl.com/smt-jam2
 
 #### *Teaching and tutoring*
-+ Paid tutoring for 5 software engineers on topics including advanced programming and career
++ Tutoring for 7 software engineers on topics including advanced programming, communication, and career growth
++ 1:1 tutoring for children @ theCoderSchool SF
++ Teach a repeating 6-week Rust workshop, mostly to engineers without systems programming experience: sfrust.com
 + Helped a mid-level engineer triple their salary with a 2-month "anti-Cracking the Interview" curriculum
 + Volunteer mentor at Hackbright Academy
 
@@ -37,6 +40,7 @@ Experience
 + Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
 + Rescued a gardening Kickstarter project with performance and quality issues 1 week before launch:
 + Rails, Stimulus.js
++ 4 other projects with 100% customer satisfaction rate
 
 #### **Remind**, San Francisco, CA
 #### *Product and infrastructure engineer*, 2015 -- 2018
