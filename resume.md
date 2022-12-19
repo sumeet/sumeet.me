@@ -10,37 +10,34 @@ Coding and software engineering
 + Polyglot up from x86 ASM to Haskell
 + Expert in Rust, Python, Ruby, Go, JS
 + Fast at getting up to speed with existing systems & reading code, productive on day one
-+ A clean and meticulous worker and well-experienced at planning and executing large-scale live migrations and refactors
-+ Project leadership, planning, communication flow, project estimation and technical mentorship
++ A clean and meticulous worker and well-experienced at planning and executing large-scale infrastructure migrations and refactors
++ Product engineering: Project leadership, planning, communication flow, project estimation and technical mentorship
 
 Teaching, coaching, mentorship
 ------------------------------
-+ 2 years teaching experience, 1:1 tutoring, online streams and in-person workshops
-+ Children fresh to computing, bootcamp grads looking for work, and senior software engineers who want to improve
-+ Am myself a passionate learner and dev tools researcher, always want to know more about how computers work
++ 3 years teaching experience, 1:1 tutoring, online streams and in-person workshops. Skill ranging between beginners to senior software engineer, ages 10-50
 
 Experience
 ----------
 #### **Self**, 2018 - 2022
-#### *Language research*
-+ Created a prototype for a visual programming language, with structured editor
-+ Language design competitions:
-+ langjam0001 Winner: tinyurl.com/smt-jam1
-+ langjam0002 Runner-up: tinyurl.com/smt-jam2
-
 #### *Teaching and tutoring*
-+ Tutoring for 7 software engineers on topics including advanced programming, communication, and career growth
++ Tutoring for 7 software engineers on topics including advanced engineering, communication, and career growth
 + 1:1 tutoring for children @ theCoderSchool SF
-+ Teach a repeating 6-week Rust workshop, mostly to engineers without systems programming experience: sfrust.com
-+ Helped a mid-level engineer triple their salary with a 2-month "anti-Cracking the Interview" curriculum
-+ Volunteer mentor at Hackbright Academy
++ Led a 6-week in-person Rust workshop, mostly to engineers without systems programming experience: sfrust.com
++ Helped a mid-level web developer triple their salary with a 2-month in-depth curriculum, focused on demystifying their frameworks and software design
++ Group session leader at Formation.dev, helping 5-6 students at a time improve their coding skills
 
-#### *Freelance work*
-+ One-person engineering team for property management startup taking over existing project:
-+ Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
-+ Rescued a gardening Kickstarter project with performance and quality issues 1 week before launch:
-+ Rails, Stimulus.js
+#### *Consulting*
++ One-person engineering team for property management startup taking over existing project: Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
++ Rescued a popular gardening Kickstarter project with performance and quality issues 1 week before launch: Rails, Stimulus.js
++ Shored up a backend for a successful startup with "contractor syndrome", a codebase that inherited many different ways of doing things, cutting the amount of time a dev needs to submit a new change to 1/4: Go, Node.js, Docker, continuous integration
 + 4 other projects with 100% customer satisfaction rate
+
+#### *Language research*
++ Language design competitions:
++ langjam0001 Overall Winner: tinyurl.com/smt-jam1
++ langjam0002 Runner-up: tinyurl.com/smt-jam2
++ Created a prototype for a visual programming language & structured editor
 
 #### **Remind**, San Francisco, CA
 #### *Product and infrastructure engineer*, 2015 -- 2018
