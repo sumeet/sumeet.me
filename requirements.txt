@@ -1,5 +1,5 @@
 cairocffi==0.8.0
-CairoSVG==2.0.3
+CairoSVG==2.7.0
 cffi==1.10.0
 cssselect==1.0.1
 html5lib==0.999999999
