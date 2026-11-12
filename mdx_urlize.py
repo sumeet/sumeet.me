@@ -40,6 +40,8 @@ Modified by sumeet:
 
 """
 
+import xml.etree.ElementTree as etree
+
 import markdown
 
 # Global Vars
@@ -53,6 +55,8 @@ URLIZE_RE = '(%s)' % '|'.join([
 
 class UrlizePattern(markdown.inlinepatterns.Pattern):
     """ Return a link Element given an autolink (`http://example/com`). """
+    ANCESTOR_EXCLUDES = ('a',)
+
     def handleMatch(self, m):
         url = m.group(2)
         
@@ -67,7 +71,7 @@ class UrlizePattern(markdown.inlinepatterns.Pattern):
             else:
                 url = 'http://' + url
     
-        el = markdown.util.etree.Element("a")
+        el = etree.Element("a")
         el.set('href', url)
         el.set('target', '_blank')
         el.text = markdown.util.AtomicString(text)
@@ -76,9 +80,14 @@ class UrlizePattern(markdown.inlinepatterns.Pattern):
 class UrlizeExtension(markdown.Extension):
     """ Urlize Extension for Python-Markdown. """
 
-    def extendMarkdown(self, md, md_globals):
+    def extendMarkdown(self, md, md_globals=None):
         """ Replace autolink with UrlizePattern """
-        md.inlinePatterns['autolink'] = UrlizePattern(URLIZE_RE, md)
+        pattern = UrlizePattern(URLIZE_RE, md)
+        if hasattr(md.inlinePatterns, 'register'):
+            md.inlinePatterns.register(pattern, 'autolink', 120)
+        else:
+            # Keep supporting the Markdown 2.x version used in production.
+            md.inlinePatterns['autolink'] = pattern
 
 def makeExtension(*args, **kwargs):
     return UrlizeExtension(*args, **kwargs)

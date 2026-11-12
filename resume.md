@@ -5,39 +5,79 @@ Sumeet Agarwal
 
 Coding and software engineering
 -------------------------------
-+ 15 years experience working with distributed web systems, open source stack
-+ Full-time and freelance
 + Polyglot up from x86 ASM to Haskell
 + Expert in Rust, Python, Ruby, Go, JS
 + Fast at getting up to speed with existing systems & reading code, productive on day one
 + A clean and meticulous worker and well-experienced at planning and executing large-scale infrastructure migrations and refactors
 + Product engineering: Project leadership, planning, communication flow, project estimation and technical mentorship
-
-Teaching, coaching, mentorship
-------------------------------
-+ 3 years teaching experience, 1:1 tutoring, online streams and in-person workshops. Skill ranging between beginners to senior software engineer, ages 10-50
++ Enthusiastic and heavy LLM user, but also skeptical and measured. I keep up with everything and I'm always evolving my workflows. At the same time very particular about code and architecture, especially where it matters most.
 
 Experience
 ----------
-#### **Self**, 2018 - 2022
-#### *Teaching and tutoring*
-+ Tutoring for 7 software engineers on topics including advanced engineering, communication, and career growth
-+ 1:1 tutoring for children @ theCoderSchool SF
-+ Led a 6-week in-person Rust workshop, mostly to engineers without systems programming experience: sfrust.com
-+ Helped a mid-level web developer triple their salary with a 2-month in-depth curriculum, focused on demystifying their frameworks and software design
-+ Group session leader at Formation.dev, helping 5-6 students at a time improve their coding skills
+#### **Sup**, 2024 - current
+#### *Product 1: Sup.net, a programmable Discord-like chat app*
++ Built the programming language runtime on Rust + WASM + QuickJS, and designed much of the end-user SDK
++ Built the chat input mechanism around a custom handwritten Markdown parser
++ All around tasks including web frontend, web backend and React Native mobile frontend
 
-#### *Consulting*
-+ One-person engineering team for property management startup taking over existing project: Go, Python, Django, Tensorflow, Ops, Frontend, Design, Distributed Systems, Web Scraping
-+ Rescued a popular gardening Kickstarter project with performance and quality issues 1 week before launch: Rails, Stimulus.js
-+ Shored up a backend for a successful startup with "contractor syndrome", a codebase that inherited many different ways of doing things, cutting the amount of time a dev needs to submit a new change to 1/4: Go, Node.js, Docker, continuous integration
-+ 4 other projects with 100% customer satisfaction rate
+#### *Product 2: Bash.tv, a multiplayer coding agent crossed with Twitch*
++ Built the initial prototype of the app working by myself for a month, company eventually pivoted to this after the initial pilot seemed promising
++ Built the coding agent, designed a "context compiler" infrastructure and a really cool in-app context viewer
++ Lead on the agent, system prompt and context management
 
-#### *Language research*
-+ Language design competitions:
-+ langjam0001 Overall Winner: tinyurl.com/smt-jam1
-+ langjam0002 Runner-up: tinyurl.com/smt-jam2
-+ Created a prototype for a visual programming language & structured editor
+#### **Contracting**, 2018 - 2024
+#### *Pluralsight / DevelopIntelligence*
+Contract instructor, taught Intro to Golang courses as part of a company's continuing education program
+
+#### *BestPracticer*
+Mentored 10 software engineers (including engineers from Strava and Vercel) from junior to senior level who
+wanted to level up their skills. I helped with either their day-to-day work or in learning new skills such as computer
+science, refactoring and software design, functional programming, C, Assembly, or whatever else they wanted to
+learn
+
+#### *theCoderSchool*
+Private 1:1 computer science / coding tutoring for middle school and high school kids, I still have 1 student who
+I've been working with for over 5 years
+
+#### *WealthConductor*
+Ported a comprehensive US tax law root-finding algorithm from Python to Rust over the course of a few months,
+and optimized the Rust port until it was 100x faster than the original
+
+#### *SeedTime*
+Rescued a gardening Kickstarter project and fixed their frontend and backend performance and quality issues, 1
+week before their launch.
+
+#### *PropertyGuard*
+One-person engineering team for a product that helped HOAs and property managers to see if their properties
+are being rented on Airbnb, Vrbo, etc. Golang, Django, TensorFlow, and a lot of web scraping
+
+#### *Looka Logo Maker*
+Mostly Golang backend work on their branded Stripe PDF invoice product
+
+#### *New Ventures West*
+A new-age spiritual management training organization. Their go-to maintenance person for over 5 years helping
+them with a custom Ruby on Rails LMS they had gotten built by contractors
+
+#### *Programming language research*
+##### langjam 0001: Zac (first place winner)
+Won a contest to create a programming language. This language is about self-modifying code. The contest theme
+was "first-class comments", and the language has a special "comment" data type that is like a string that you can
+write to, and it gets rendered into the source file. It's really cool, it's like a cross between a REPL and a
+programming language.
+
+> + GitHub: [github.com/sumeet/Zac](https://github.com/sumeet/Zac)
+> + YouTube: [tinyurl.com/smt-jam1](https://tinyurl.com/smt-jam1)
+
+##### langjam 0002: matcharoni (runner-up)
+Not as strong as my first entry, but still managed to get featured in the contest video recap. It's a language that's
+all about pattern matching, and there's some cool examples of using it to parse and solve Advent of Code
+problems
+
+> + GitHub: [github.com/sumeet/matcharoni](https://github.com/sumeet/matcharoni)
+> + YouTube: [tinyurl.com/smt-jam2](https://tinyurl.com/smt-jam2)
+
+#### *CodeMaestro*
+Spent 2 years developing a prototype for a visual programming language, a cross between Scratch, Vim and Rust
 
 #### **Remind**, San Francisco, CA
 #### *Product and infrastructure engineer*, 2015 -- 2018
@@ -50,7 +90,7 @@ Devised several large-scale infrastructure projects, fixing performance issues u
 to a high traffic messaging app with 30 million users, and implemented organization-wide
 changes to significantly reduce the app's error rate.
 
-Ruby, Go, Python, React, Node.JS, RabbitMQ, Redis, PostgreSQL, DynamoDB, statsd
+Ruby, Go, Python, React, Node.js, RabbitMQ, Redis, PostgreSQL, DynamoDB, StatsD
 
 #### **SocialChorus**, San Francisco, CA
 #### *Senior product engineer*, 2015
@@ -77,11 +117,11 @@ over the US.
 + Built internal tools like wikis and blogs, so different branches could
   share information with each other
 + Administered Linux and Solaris servers
-+ Built a internal employee catalog, synchronizing data between Microsoft Exchange
++ Built an internal employee catalog, synchronizing data between Microsoft Exchange
   and Oracle E-Business Suite
 + Implemented a web-based single site authentication system that worked on top
   of Active Directory
-+ Rebuilt the company website, which had previously been built in Microsoft Frontpage
++ Rebuilt the company website, which had previously been built in Microsoft FrontPage
   and maintained by a single developer, into a CMS which the marketing department could
   update themselves
 
@@ -92,7 +132,7 @@ Education and background
 #### Boston University, Bachelors in Computer Science -- Boston, MA, 2008
 
 #### Pre-university accomplishments
-+ Worked with a team of volunteers to build VGMix, a web community where musicians
++ Worked with a team of volunteers to build VGMix, a popular web community where musicians
   shared music and feedback. MySQL, PHP, circa 2003 - 2006
 + Had a complex patch accepted into Adium IM client for auto-away
 + Managed and coded software for large (100+) IRC bot clusters
@@ -103,4 +143,5 @@ Education and background
 
 Other interests
 ---------------
-Running, functional programming, Zachtronics games, Advent of Code, Linux, tiling window managers
+Running, Zachtronics games, Advent of Code, Linux, Mac, Windows (I use everything), tiling window managers,
+literary fiction, Neovim, weird programming languages, linguistics
