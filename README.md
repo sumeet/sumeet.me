@@ -33,6 +33,16 @@ renderer’s appearance; no separate font files or manual preparation are needed
 
 Deployment uses the Python and Make buildpacks listed in `.buildpacks`.
 The Python buildpack reads `.python-version` and `requirements.txt`; the Make
-buildpack runs `make`. The existing Dokku app uses a legacy Herokuish stack,
-so test a newer stack with Python 3.13 and WeasyPrint's system libraries before
-the next deployment.
+buildpack runs `make`. The live Dokku app is `nice`, reached by the `dokku2`
+Git remote. It uses the Heroku-24 build image, configured per app:
+
+```sh
+ssh root@sumeet.me dokku buildpacks:set-property nice stack gliderlabs/herokuish:latest-24
+```
+
+After committing changes, push the source to GitHub and deploy to Dokku:
+
+```sh
+git push origin master
+git push dokku2 master
+```
