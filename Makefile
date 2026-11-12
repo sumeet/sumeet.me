@@ -1,10 +1,11 @@
-PYTHON ?= $(if $(wildcard .venv/bin/python),$(CURDIR)/.venv/bin/python,python)
+PYTHON_VERSION := $(shell cat .python-version)
+PYTHON ?= $(if $(wildcard .venv/bin/python),$(CURDIR)/.venv/bin/python,python$(PYTHON_VERSION))
 
 default: html pdf
 
 setup:
-	python3 -m venv .venv
-	.venv/bin/python -m pip install -r requirements-local.txt
+	python$(PYTHON_VERSION) -m venv .venv
+	.venv/bin/python -m pip install -r requirements.txt
 
 html:
 	mkdir -p build

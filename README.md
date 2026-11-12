@@ -5,13 +5,14 @@ from Markdown to HTML, and `build_html.py` wraps it in the page template.
 `make html` writes `build/index.html` and copies the CSS, fonts, and other assets.
 The generated `build/` directory is ignored by Git.
 
-For a local preview, use Python 3.11+ and install the dependencies once:
+For a local preview, install Python 3.13 (the version specified in
+`.python-version`), then install the dependencies once:
 
 ```sh
 make setup
 ```
 
-This creates `.venv/` with the local Markdown and WeasyPrint dependencies.
+This creates `.venv/` using the same `requirements.txt` as the Python buildpack.
 The Makefile automatically uses this environment when present. WeasyPrint
 also needs system Pango libraries; see its [installation instructions](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html#installation).
 
@@ -27,3 +28,11 @@ not rebuild automatically.
 
 Use `make html` or `make pdf` to rebuild only one format. PDF generation uses
 WeasyPrint and the bundled fonts. `make clean` removes the generated output.
+The PDF build derives italic faces from those fonts to preserve the original
+renderer’s appearance; no separate font files or manual preparation are needed.
+
+Deployment uses the Python and Make buildpacks listed in `.buildpacks`.
+The Python buildpack reads `.python-version` and `requirements.txt`; the Make
+buildpack runs `make`. The existing Dokku app uses a legacy Herokuish stack,
+so test a newer stack with Python 3.13 and WeasyPrint's system libraries before
+the next deployment.

@@ -1,7 +1,7 @@
 Sumeet Agarwal
 ==============
 > + sumeet.a@gmail.com
-> + https://github.com/sumeet
+> + github.com/sumeet
 
 Coding and software engineering
 -------------------------------
@@ -15,7 +15,7 @@ Coding and software engineering
 Experience
 ----------
 #### **Sup**, 2024 - current
-#### *Product 1: Sup.net, a programmable Discord-like chat app*
+#### *Product 1: Sup\.net, a programmable Discord-like chat app*
 + Built the programming language runtime on Rust + WASM + QuickJS, and designed much of the end-user SDK
 + Built the chat input mechanism around a custom handwritten Markdown parser
 + All around tasks including web frontend, web backend and React Native mobile frontend
@@ -30,33 +30,26 @@ Experience
 Contract instructor, taught Intro to Golang courses as part of a company's continuing education program
 
 #### *BestPracticer*
-Mentored 10 software engineers (including engineers from Strava and Vercel) from junior to senior level who
-wanted to level up their skills. I helped with either their day-to-day work or in learning new skills such as computer
-science, refactoring and software design, functional programming, C, Assembly, or whatever else they wanted to
-learn
+Mentored 10 software engineers (including engineers from Strava and Vercel) between junior to senior level who wanted to level up their skills. I helped with either their day-to-day work or in learning new skills such as computer
+science, refactoring and software design, functional programming, C, Assembly, or whatever else they wanted to learn
 
 #### *theCoderSchool*
-Private 1:1 computer science / coding tutoring for middle school and high school kids, I still have 1 student who
-I've been working with for over 5 years
+Private 1:1 computer science / coding tutoring for middle school and high school kids, I still have 1 student who I've been working with for over 5 years
 
 #### *WealthConductor*
-Ported a comprehensive US tax law root-finding algorithm from Python to Rust over the course of a few months,
-and optimized the Rust port until it was 100x faster than the original
+Ported a comprehensive US tax law root-finding algorithm from Python to Rust over the course of a few months, and optimized the Rust port until it was 100x faster than the original
 
 #### *SeedTime*
-Rescued a gardening Kickstarter project and fixed their frontend and backend performance and quality issues, 1
-week before their launch.
+Rescued a gardening Kickstarter project and fixed their frontend and backend performance and quality issues, 1 week before their launch.
 
 #### *PropertyGuard*
-One-person engineering team for a product that helped HOAs and property managers to see if their properties
-are being rented on Airbnb, Vrbo, etc. Golang, Django, TensorFlow, and a lot of web scraping
+One-person engineering team for a product that helped HOAs and property managers to see if their properties are being rented on Airbnb, Vrbo, etc. Golang, Django, TensorFlow, and a lot of web scraping
 
 #### *Looka Logo Maker*
 Mostly Golang backend work on their branded Stripe PDF invoice product
 
 #### *New Ventures West*
-A new-age spiritual management training organization. Their go-to maintenance person for over 5 years helping
-them with a custom Ruby on Rails LMS they had gotten built by contractors
+A new-age spiritual management training organization. Their go-to maintenance person for over 5 years helping them with a custom Ruby on Rails LMS they had gotten built by contractors
 
 #### *Programming language research*
 ##### langjam 0001: Zac (first place winner)

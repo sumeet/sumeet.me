@@ -1,3 +1,0 @@
-# Local preview with Python 3.11+. Production uses requirements.txt.
-Markdown==3.9
-WeasyPrint==70.0
