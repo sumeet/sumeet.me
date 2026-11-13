@@ -1,0 +1,1 @@
+Resizes your active window using the golden ratio, an addon for [bspwm](https://github.com/baskerville/bspwm), a tiling window manager for Linux. Inspired by [golden-ratio.el](https://github.com/roman/golden-ratio.el)

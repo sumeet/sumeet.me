@@ -1,0 +1,58 @@
+.projects .project {
+    margin-bottom: 3em;
+}
+
+.projects .project-title {
+    padding: .6em .8em;
+    margin-bottom: .75em;
+    font-size: 1.5em;
+    line-height: 1.25;
+}
+
+.projects .project-title a {
+    color: #111111;
+    text-decoration: none;
+}
+
+.projects .project-copy p {
+    margin-bottom: 1.25em;
+}
+
+.projects .project-demo {
+    max-width: 720px;
+}
+
+.projects .project img, .projects .project video {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: .25em;
+}
+
+.projects .project-demos {
+    display: grid;
+    grid-template-columns: minmax(0, 374fr) minmax(0, 500fr);
+    gap: 16px;
+    max-width: 890px;
+    align-items: center;
+}
+
+.projects .project video {
+    object-fit: contain;
+    background: #1b2330;
+}
+
+.projects .project-demos video:first-child {
+    grid-row: span 2;
+}
+
+@media (max-width: 650px) {
+    .projects .project-demos {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .projects .project-demos video:first-child {
+        grid-row: auto;
+        max-height: 430px;
+    }
+}

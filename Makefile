@@ -9,15 +9,18 @@ setup:
 
 html:
 	mkdir -p build
-	$(PYTHON) build_html.py > build/index.html
+	$(PYTHON) build_html.py
 	cp style.css build/
+	cp projects.css projects.js build/
+	mkdir -p build/fonts
+	cp fonts/* build/fonts/
+	mkdir -p build/projects
+	cp projects/*.gif build/projects/
+	cp projects/*.mp4 build/projects/
 	cp *.otf build/
 	cp darkreader.js build/
 	cp favicon.ico build/
 	cp resume.md build/sumeet.txt
-	# /resume was the URL for my old resume, which is now the whole site. make
-	# it work so old links to it don't 404
-	ln -sfn . build/resume
 
 serve: html pdf
 	cd build && $(PYTHON) -m http.server 8000 --bind 127.0.0.1

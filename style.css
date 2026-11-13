@@ -138,11 +138,22 @@ form textarea { width: 390px; height: 250px; }
 
 @font-face { font-family: "Graublau Web"; font-weight: bold; src: url(GraublauWebBold.otf) format("opentype"); }
 
+@font-face {
+    font-family: "Liberation Sans";
+    src: url("fonts/LiberationSans-Bold.woff2") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 body { font-family: "Lucida Grande", Verdana, Arial, sans-serif; }
 body h1, body h2, body h3, body h4, body h5, body h6 { font-family: "Graublau Web", Helvetica Neue,Arial,Helvetica,sans-serif; }
-body #nav { font-family: Helvetica Neue,Arial,Helvetica,sans-serif; }
+body .site-name, body #nav, body .project-title {
+    font-family: "Liberation Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
 body code { white-space: pre; }
-body .box { -moz-border-radius: .5em; -webkit-border-radius: .5em; }
+body .box { border-radius: .5em; }
 body ol { margin: 0 1.5em 1.5em 0; padding-left: 3.333em; }
 body ol li { margin: 0; }
 body ul li { list-style-type: none; margin-left: 0px; }
@@ -150,27 +161,44 @@ body ul.line { list-style-type: none; margin: 0px; padding: 0px; display: inline
 body ul.line li { margin: 0px; padding: 0px; display: inline; }
 body ul.line li:after { content: ", "; }
 body ul.line li:last-child:after, body ul.line li.last:after { content: ""; }
-body #container { width: 960px; margin: 0 auto; overflow: hidden; display: inline-block; margin-top: 2em; }
-body #container { display: block; }
-body #header { width: 960px; margin: 0 auto; overflow: hidden; display: inline-block; margin-top: 0.75em; margin-bottom: 2em; }
-body #header { display: block; }
-body #header #logo { padding: 0.25em 0; display: inline; float: left; margin-right: 20px; width: 225px; }
-* html body #header #logo { overflow-x: hidden; }
-body #header #logo a { color: inherit; text-decoration: inherit; cursor: inherit; }
-body #header #nav { font-size: 1.5em; font-weight: bold; text-transform: lowercase; display: inline; float: left; margin-right: 0; width: 715px; }
-* html body #header #nav { overflow-x: hidden; }
-body #header #nav ul { background-color: #E5ECF9; margin: 0; padding: 0; border: 0; outline: 0; overflow: hidden; display: inline-block; padding: 0.25em 0.75em; -moz-border-radius: .5em; -webkit-border-radius: .5em; float: right; margin: auto; }
-body #header #nav ul { display: block; }
-body #header #nav ul li { list-style-type: none; margin-left: 0px; white-space: nowrap; display: inline; float: left; padding-left: 0.75em; padding-right: 0.75em; }
-body #header #nav ul li.first { padding-left: 0px; }
-body #header #nav ul li.last { padding-right: 0px; }
-body #header #nav ul a, body #header #nav ul a:active, body #header #nav ul a:visited, body #header #nav ul a:focus { color: #666666; text-decoration: none; }
-body #header #nav ul a:hover { color: #111111; }
-body #header #nav ul li.current a, body #header #nav ul li.current a:active, body #header #nav ul li.current a:visited, body #header #nav ul li.current a:focus { color: #111111; }
-body #footer { display: inline; float: left; margin-right: 0; width: 960px; }
-* html body #footer { overflow-x: hidden; }
-body #content { display: inline; float: left; margin-right: 20px; width: 633.333px; }
-* html body #content { overflow-x: hidden; }
-body #sidebar { display: inline; float: left; margin-right: 0; width: 306.667px; text-align: right; }
-* html body #sidebar { overflow-x: hidden; }
+body #container, body #header { width: min(960px, calc(100% - 40px)); }
+body #container { display: block; margin: 0 auto 2em; }
+body #header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 2em auto;
+}
+body .site-name { font-size: 1.5em; color: #111111; text-decoration: none; }
+body #nav { font-size: 1.5em; }
+body #nav ul {
+    display: flex;
+    gap: 1.2em;
+    margin: 0;
+    padding: .3em .7em;
+    background: #E5ECF9;
+    border-radius: .5em;
+}
+body #nav li { list-style: none; margin: 0; }
+body #nav a { color: #666666; text-decoration: none; }
+body #nav a:hover, body #nav a:focus-visible, body #nav a[aria-current="page"] { color: #111111; }
+body .page-with-sidebar {
+    display: grid;
+    grid-template-columns: minmax(0, 633.333px) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+body #content, body #sidebar { min-width: 0; }
+body #sidebar { text-align: right; }
 body #sidebar div.section { margin-bottom: 0.5em; }
+
+@media (max-width: 800px) {
+    body .page-with-sidebar { grid-template-columns: minmax(0, 1fr); }
+    body #sidebar { grid-row: 1; text-align: left; }
+    body #sidebar .section { display: flex; flex-wrap: wrap; gap: .5em 1em; align-items: baseline; }
+    body #sidebar h3 { margin: 0; font: inherit; }
+    body #sidebar ul { display: flex; flex-wrap: wrap; gap: 1em; margin: 0; }
+    body #content { overflow-wrap: anywhere; }
+}

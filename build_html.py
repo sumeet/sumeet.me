@@ -1,53 +1,40 @@
 #!/usr/bin/env python
 
-import resume
+from pathlib import Path
+
+import build_projects
+import build_resume
 
 
-def render_html():
-    return f"""
-<!doctype html>
+def build_site():
+    output = Path('build')
+    output.mkdir(exist_ok=True)
+    resume_directory = output / 'resume'
+    # Older builds made /resume an alias for the homepage.
+    if resume_directory.is_symlink():
+        resume_directory.unlink()
+    resume_directory.mkdir(exist_ok=True)
 
-<html>
+    pages = {
+        output / 'index.html': build_projects.render_html(),
+        resume_directory / 'index.html': build_resume.render_html(),
+    }
+    for destination, html in pages.items():
+        destination.write_text(html, encoding='utf-8')
+
+    # Keep existing local preview bookmarks pointing at the projects homepage.
+    (output / 'projects.html').write_text('''<!doctype html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="darkreader.js"></script>
-        <script>
-            function toggleDarkMode() {{
-                const linkEl = document.getElementById("toggle");
-                if (linkEl.dataset.mode == "dark") {{
-                    DarkReader.disable();
-                    linkEl.innerHTML = "Dark mode";
-                    linkEl.dataset.mode = "light";
-                }} else {{
-                    DarkReader.enable({{brightness: 100, contrast: 95, sepia: 30}});
-                    linkEl.dataset.mode = "dark";
-                    linkEl.innerHTML = "Light mode";
-                }}
-                return false;
-            }}
-        </script>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="0; url=/">
+        <link rel="canonical" href="/">
+        <title>Projects — Sumeet Agarwal</title>
     </head>
-    <body class="home">
-        <div id="container">
-            <div id="content">
-                {resume.html()}
-            </div>
-
-            <div id="sidebar">
-                <div class="section">
-                    <h3>Other formats</h3>
-                    <ul>
-                        <li><a href="sumeet.txt">Plain text</a></li>
-                        <li><a href="sumeet.pdf">PDF</a></li>
-                        <li><a id="toggle" data-mode="light" href="#" onclick="return toggleDarkMode();">Dark mode</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </body>
+    <body><a href="/">Projects</a></body>
 </html>
-"""
+''', encoding='utf-8')
 
 
 if __name__ == '__main__':
-    print(render_html())
+    build_site()
