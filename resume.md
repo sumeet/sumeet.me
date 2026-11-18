@@ -15,15 +15,16 @@ Coding and software engineering
 Experience
 ----------
 #### **Sup**, 2024 - current
-#### *Product 1: Sup\.net, a programmable Discord-like chat app*
+#### *Product 1: Sup\.net, a consumer-social chat app similar to Discord for writing and sharing executable programs (before agents were a thing)*
 + Built the programming language runtime on Rust + WASM + QuickJS, and designed much of the end-user SDK
 + Built the chat input mechanism around a custom handwritten Markdown parser
-+ All around tasks including web frontend, web backend and React Native mobile frontend
++ Full-stack development including web frontend, web backend and React Native mobile frontend
 
 #### *Product 2: Bash.tv, a multiplayer coding agent crossed with Twitch*
-+ Built the initial prototype of the app working by myself for a month, company eventually pivoted to this after the initial pilot seemed promising
-+ Built the coding agent, designed a "context compiler" infrastructure and a really cool in-app context viewer
-+ Lead on the agent, system prompt and context management
++ Independently built the initial product prototype in one month, leading to a successful pilot and the company's decision to pivot toward Bash.tv
++ Built a sandboxed coding-agent runtime with real-time HTTP/WebSocket streaming, tool execution visibility, persistent, resumable agent sessions, and secrets management
++ Architected a context-compilation system with an extension system for context modificiation, compaction, image management, and a user-facing interactive viewer for understanding exactly what the model sees
++ Technical lead for agent architecture, system prompts, context management, and tools
 
 #### **Contracting**, 2018 - 2024
 #### *Pluralsight / DevelopIntelligence*
