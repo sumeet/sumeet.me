@@ -70,6 +70,14 @@
     margin-top: 1.25em;
 }
 
+.projects .project-playground {
+    display: block;
+    width: 100%;
+    max-width: 890px;
+    border: 0;
+    border-radius: 5px;
+}
+
 .projects .project-presentation summary {
     width: fit-content;
     cursor: pointer;

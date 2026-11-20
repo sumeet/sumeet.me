@@ -24,6 +24,7 @@ class Project:
     description_file: str
     demos: tuple[Demo, ...]
     presentation: Presentation | None = None
+    playground: str | None = None
 
 
 # Display order is intentional; descriptions are handwritten Markdown files.
@@ -58,6 +59,16 @@ PROJECTS = (
             Demo('projects/codemaestro-file-tree-completed.webp', 'Completed recursive file paths function in CodeMaestro'),
             Demo('projects/codemaestro-particle-rename.webp', 'Renaming a Particle field in CodeMaestro alongside the code that uses it'),
         ),
+    ),
+    Project(
+        slug='rejectsynth',
+        title='rejectsynth',
+        dates='2023',
+        technologies=('Rust', 'VSCode Extension'),
+        url='https://github.com/sumeet/rejectsynth',
+        description_file='projects/rejectsynth.md',
+        demos=(),
+        playground='projects/rejectsynth/index.html',
     ),
     Project(
         slug='golden',

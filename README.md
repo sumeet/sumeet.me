@@ -38,7 +38,7 @@ renderer’s appearance; no separate font files or manual preparation are needed
 
 The projects preview is at http://localhost:8000/ and the résumé is at
 http://localhost:8000/resume/. Project descriptions live in `projects/zac.md`,
-`projects/codemaestro.md`, and `projects/golden.md`. `project_catalog.py` supplies their order, titles,
+`projects/codemaestro.md`, `projects/rejectsynth.md`, and `projects/golden.md`. `project_catalog.py` supplies their order, titles,
 dates, technologies, links, and demo assets to the reusable `render_project()` function. New projects
 need a Markdown description and a catalog entry, without copied layout HTML.
 Project-specific layout is in `projects.css`. After editing, run `make html`
@@ -47,6 +47,25 @@ Project headers use the old Reading page's compact Graublau titles, linked to
 their repositories, followed by a smaller "from <date> using <technologies>" line.
 CodeMaestro uses the original WebP assets: the stack interpreter and completed
 file-tree stills above the particle rename loop. The build copies them unchanged.
+
+rejectsynth is embedded as a lazy-loaded, same-origin iframe. Its source remains
+in `../rejectsynth/browser` and shares the desktop extension's editor behavior.
+`projects/rejectsynth/` contains the static export, its source revision/build
+fingerprint, and dependency notices. Do not edit those generated files. After
+changing the editor in the rejectsynth repository, refresh the export with:
+
+```sh
+make rejectsynth
+make html
+```
+
+Set `REJECTSYNTH_DIR=/path/to/rejectsynth` if the checkout is elsewhere. This
+explicit export step needs Node, Rust and wasm-bindgen; ordinary site builds and
+Dokku deployment still only need the existing Python/Make setup. The editor has
+an inline Play/Stop link, fixed 50% gain, and optional Vim bindings behind its
+top-right icon. It resizes to its content and stops playback when scrolled out
+of view. The 2023 date comes from the original September–November commit history.
+
 Zac's Game of Life, help, and Fibonacci demos are visible together and loop
 independently, without visible controls or a selector.
 The MP4s are converted from the GIFs in the Zac repository's `.README_assets/`

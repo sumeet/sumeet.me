@@ -35,13 +35,18 @@ def render_project(project: Project):
     description = markdown(Path(project.description_file).read_text(encoding='utf-8'))
     demos = '\n'.join(render_demo(demo) for demo in project.demos)
     media_class = 'project-demos' if len(project.demos) > 1 else 'project-demo'
+    media = f'<div class="{media_class}">{demos}</div>' if demos else ''
+    if project.playground:
+        media = f'''<iframe class="project-playground" src="{asset_url(project.playground)}"
+            title="{escape(project.title, quote=True)} interactive music editor"
+            loading="lazy" allow="autoplay" height="490"></iframe>'''
     return f"""<article class="project" id="{escape(project.slug, quote=True)}">
         <header class="box project-heading">
             <h2 class="project-title"><a href="{escape(project.url, quote=True)}">{escape(project.title)}</a></h2>
-            <p class="project-meta quiet">from <span class="project-date loud">{escape(project.dates)}</span> using <span class="loud">{escape(', '.join(project.technologies))}</span></p>
+            <p class="project-meta quiet">from <span class="project-date loud">{escape(project.dates)}</span> using <span class="loud">{escape(' and '.join(project.technologies))}</span></p>
         </header>
         <div class="project-copy">{description}</div>
-        <div class="{media_class}">{demos}</div>
+        {media}
         {render_presentation(project.presentation)}
     </article>"""
 

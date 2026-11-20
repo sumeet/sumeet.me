@@ -1,5 +1,6 @@
 PYTHON_VERSION := $(shell cat .python-version)
 PYTHON ?= $(if $(wildcard .venv/bin/python),$(CURDIR)/.venv/bin/python,python$(PYTHON_VERSION))
+REJECTSYNTH_DIR ?= ../rejectsynth
 
 default: html pdf
 
@@ -19,6 +20,7 @@ html:
 	cp projects/*.mp4 build/projects/
 	cp projects/*.png build/projects/
 	cp projects/*.webp build/projects/
+	cp -R projects/rejectsynth build/projects/
 	cp *.otf build/
 	cp darkreader.js build/
 	cp favicon.ico build/
@@ -26,6 +28,11 @@ html:
 
 serve: html pdf
 	cd build && $(PYTHON) -m http.server 8000 --bind 127.0.0.1
+
+# The synth source lives in its own repository; Dokku serves this static export.
+rejectsynth:
+	cd "$(REJECTSYNTH_DIR)/browser" && npm ci && npm run wasm && npm run build
+	$(PYTHON) sync_rejectsynth.py "$(REJECTSYNTH_DIR)"
 
 open_html:
 	open build/index.html
@@ -46,4 +53,4 @@ clean:
 	rm -rf build
 	rm -rf __pycache__
 
-.PHONY: default setup html serve open_html test_html pdf open_pdf test_pdf clean
+.PHONY: default setup html serve rejectsynth open_html test_html pdf open_pdf test_pdf clean
