@@ -3,9 +3,18 @@ document.querySelectorAll('.project video[autoplay]').forEach((video) => {
 });
 
 document.querySelectorAll('.project-presentation').forEach((presentation) => {
-    presentation.addEventListener('toggle', () => {
-        if (!presentation.open) presentation.querySelector('video').pause();
+    const video = presentation.querySelector('video');
+    const play = presentation.querySelector('.project-presentation-play');
+    play.hidden = false;
+    play.addEventListener('click', () => {
+        // Leave the media URL unassigned until the visitor explicitly plays it.
+        if (!video.hasAttribute('src')) video.src = video.dataset.src;
+        video.controls = true;
+        video.play().catch(() => {});
     });
+    video.addEventListener('play', () => { play.hidden = true; });
+    video.addEventListener('pause', () => { play.hidden = false; });
+    video.addEventListener('ended', () => { play.hidden = false; });
 });
 
 const playgrounds = [...document.querySelectorAll('.project-playground')];

@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import re
 
 
 @dataclass(frozen=True)
@@ -26,8 +27,12 @@ class Project:
     presentation: Presentation | None = None
     playground: str | None = None
 
+    @property
+    def latest_year(self):
+        return max(int(year) for year in re.findall(r'\d{4}', self.dates))
 
-# Display order is intentional; descriptions are handwritten Markdown files.
+
+# Rendered newest first by latest_year; descriptions are handwritten Markdown files.
 PROJECTS = (
     Project(
         slug='zac',
@@ -64,7 +69,7 @@ PROJECTS = (
         slug='rejectsynth',
         title='rejectsynth',
         dates='2023',
-        technologies=('Rust', 'VSCode Extension'),
+        technologies=('Rust', 'VSCode'),
         url='https://github.com/sumeet/rejectsynth',
         description_file='projects/rejectsynth.md',
         demos=(),

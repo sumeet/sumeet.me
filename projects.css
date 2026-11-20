@@ -44,7 +44,7 @@
     grid-template-columns: minmax(0, 374fr) minmax(0, 500fr);
     gap: 16px;
     max-width: 890px;
-    align-items: center;
+    align-items: start;
 }
 
 .projects .project video {
@@ -52,8 +52,10 @@
     background: #1b2330;
 }
 
-.projects .project-demos video:first-child {
-    grid-row: span 2;
+.projects .project-demo-stack {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
 }
 
 .projects #codemaestro .project-demos {
@@ -66,8 +68,8 @@
 }
 
 .projects .project-presentation {
+    position: relative;
     max-width: 890px;
-    margin-top: 1.25em;
 }
 
 .projects .project-playground {
@@ -78,13 +80,41 @@
     border-radius: 5px;
 }
 
-.projects .project-presentation summary {
-    width: fit-content;
+.projects .project-presentation-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: #1b2330;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .25);
     cursor: pointer;
 }
 
-.projects .project-presentation[open] summary {
-    margin-bottom: .75em;
+.projects .project-presentation-play svg {
+    width: 30px;
+    height: 30px;
+    fill: currentColor;
+}
+
+.projects .project-presentation-play:hover {
+    background: #fff;
+}
+
+.projects .project-presentation-play:focus-visible {
+    outline: 3px solid #4269a5;
+    outline-offset: 3px;
+}
+
+.projects .project-presentation-play[hidden] {
+    display: none;
 }
 
 @media (max-width: 650px) {
@@ -93,8 +123,7 @@
         grid-template-columns: minmax(0, 1fr);
     }
 
-    .projects .project-demos video:first-child {
-        grid-row: auto;
+    .projects .project-demos > video:first-child {
         max-height: 430px;
     }
 }

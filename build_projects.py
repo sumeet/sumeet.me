@@ -23,36 +23,49 @@ def render_presentation(presentation: Presentation | None):
     source = escape('/' + presentation.source, quote=True)
     poster = escape('/' + presentation.poster, quote=True)
     description = escape(presentation.description, quote=True)
-    return f"""<details class="project-presentation">
-        <summary>Watch presentation</summary>
-        <video src="{source}" poster="{poster}" controls playsinline preload="none" aria-label="{description}">
+    return f"""<div class="project-presentation">
+        <video data-src="{source}" poster="{poster}" playsinline preload="none" aria-label="{description}">
             <a href="{source}">Watch presentation</a>
         </video>
-    </details>"""
+        <button class="project-presentation-play" type="button" aria-label="Play video" title="Play video" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <noscript><a href="{source}">Watch presentation</a></noscript>
+    </div>"""
 
 
 def render_project(project: Project):
     description = markdown(Path(project.description_file).read_text(encoding='utf-8'))
-    demos = '\n'.join(render_demo(demo) for demo in project.demos)
+    demo_items = [render_demo(demo) for demo in project.demos]
+    presentation = render_presentation(project.presentation)
+    if presentation and len(demo_items) > 1:
+        secondary = '\n'.join([*demo_items[1:], presentation])
+        demos = f'{demo_items[0]}<div class="project-demo-stack">{secondary}</div>'
+        presentation = ''
+    else:
+        demos = '\n'.join(demo_items)
     media_class = 'project-demos' if len(project.demos) > 1 else 'project-demo'
     media = f'<div class="{media_class}">{demos}</div>' if demos else ''
     if project.playground:
         media = f'''<iframe class="project-playground" src="{asset_url(project.playground)}"
             title="{escape(project.title, quote=True)} interactive music editor"
             loading="lazy" allow="autoplay" height="490"></iframe>'''
+    technologies = ' and '.join(f'<span class="loud">{escape(technology)}</span>'
+                                for technology in project.technologies)
     return f"""<article class="project" id="{escape(project.slug, quote=True)}">
         <header class="box project-heading">
             <h2 class="project-title"><a href="{escape(project.url, quote=True)}">{escape(project.title)}</a></h2>
-            <p class="project-meta quiet">from <span class="project-date loud">{escape(project.dates)}</span> using <span class="loud">{escape(' and '.join(project.technologies))}</span></p>
+            <p class="project-meta quiet">from <span class="project-date loud">{escape(project.dates)}</span> using {technologies}</p>
         </header>
         <div class="project-copy">{description}</div>
         {media}
-        {render_presentation(project.presentation)}
+        {presentation}
     </article>"""
 
 
 def render_html():
-    projects = '\n'.join(render_project(project) for project in PROJECTS)
+    projects = '\n'.join(render_project(project) for project in
+                         sorted(PROJECTS, key=lambda project: project.latest_year, reverse=True))
     extra_head = f"""
         <link rel="stylesheet" href="{asset_url('projects.css')}">
         <script src="{asset_url('projects.js')}" defer></script>

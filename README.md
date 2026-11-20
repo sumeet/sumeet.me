@@ -38,9 +38,10 @@ renderer’s appearance; no separate font files or manual preparation are needed
 
 The projects preview is at http://localhost:8000/ and the résumé is at
 http://localhost:8000/resume/. Project descriptions live in `projects/zac.md`,
-`projects/codemaestro.md`, `projects/rejectsynth.md`, and `projects/golden.md`. `project_catalog.py` supplies their order, titles,
+`projects/codemaestro.md`, `projects/rejectsynth.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
 dates, technologies, links, and demo assets to the reusable `render_project()` function. New projects
 need a Markdown description and a catalog entry, without copied layout HTML.
+Projects are sorted newest first, using the latest year in each displayed date range.
 Project-specific layout is in `projects.css`. After editing, run `make html`
 and refresh.
 Project headers use the old Reading page's compact Graublau titles, linked to
@@ -77,8 +78,11 @@ ffmpeg -i input.gif -an -vf fps=30 -c:v libx264 -crf 23 -preset slow -pix_fmt yu
 
 The converted files are included in the repository, so normal builds do not need ffmpeg.
 
-Zac also has a collapsible presentation video with sound and native playback
-controls. `projects/zac-presentation.mp4` is the 08:30.000–09:41.700 excerpt from
+Zac's presentation video sits below the help and Fibonacci demos in the right
+column, with 8px gaps. Both columns align at the top; on narrow screens they
+become a single column. Only the poster loads initially. Pressing Play assigns
+the video's source and enables sound and native playback controls.
+`projects/zac-presentation.mp4` is the 08:30.000–09:41.700 excerpt from
 the supplied `~/Downloads/videoplayback.mp4`, ending before the next project.
 The original file is unchanged. To recreate the clip and its title-card poster:
 
