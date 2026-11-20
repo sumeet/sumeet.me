@@ -2,16 +2,26 @@
     margin-bottom: 3em;
 }
 
-.projects .project-title {
-    padding: .6em .8em;
-    margin-bottom: .75em;
-    font-size: 1.5em;
+.projects .project-heading {
+    padding: 1.25em 1.5em;
+    margin-bottom: 1.5em;
+    font-family: "Graublau Web", "Helvetica Neue", Arial, Helvetica, sans-serif;
+    font-size: 1.2em;
     line-height: 1.25;
 }
 
-.projects .project-title a {
-    color: #111111;
-    text-decoration: none;
+.projects .project-title {
+    margin: 0;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: inherit;
+}
+
+.projects .project-meta {
+    margin: 0;
+    font-size: .833333em;
+    font-weight: normal;
+    line-height: 1.5;
 }
 
 .projects .project-copy p {
@@ -46,8 +56,32 @@
     grid-row: span 2;
 }
 
+.projects #codemaestro .project-demos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+}
+
+.projects #codemaestro .project-demos img:last-child {
+    grid-column: 1 / -1;
+}
+
+.projects .project-presentation {
+    max-width: 890px;
+    margin-top: 1.25em;
+}
+
+.projects .project-presentation summary {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.projects .project-presentation[open] summary {
+    margin-bottom: .75em;
+}
+
 @media (max-width: 650px) {
-    .projects .project-demos {
+    .projects .project-demos,
+    .projects #codemaestro .project-demos {
         grid-template-columns: minmax(0, 1fr);
     }
 

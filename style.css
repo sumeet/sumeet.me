@@ -148,7 +148,7 @@ form textarea { width: 390px; height: 250px; }
 
 body { font-family: "Lucida Grande", Verdana, Arial, sans-serif; }
 body h1, body h2, body h3, body h4, body h5, body h6 { font-family: "Graublau Web", Helvetica Neue,Arial,Helvetica,sans-serif; }
-body .site-name, body #nav, body .project-title {
+body .site-name, body #nav {
     font-family: "Liberation Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
     font-weight: bold;
 }

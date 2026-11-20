@@ -17,6 +17,8 @@ html:
 	mkdir -p build/projects
 	cp projects/*.gif build/projects/
 	cp projects/*.mp4 build/projects/
+	cp projects/*.png build/projects/
+	cp projects/*.webp build/projects/
 	cp *.otf build/
 	cp darkreader.js build/
 	cp favicon.ico build/

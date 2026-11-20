@@ -8,12 +8,22 @@ class Demo:
 
 
 @dataclass(frozen=True)
+class Presentation:
+    source: str
+    poster: str
+    description: str
+
+
+@dataclass(frozen=True)
 class Project:
     slug: str
     title: str
+    dates: str
+    technologies: tuple[str, ...]
     url: str
     description_file: str
     demos: tuple[Demo, ...]
+    presentation: Presentation | None = None
 
 
 # Display order is intentional; descriptions are handwritten Markdown files.
@@ -21,6 +31,8 @@ PROJECTS = (
     Project(
         slug='zac',
         title='Zac',
+        dates='2021',
+        technologies=('Rust',),
         url='https://github.com/sumeet/Zac',
         description_file='projects/zac.md',
         demos=(
@@ -28,10 +40,30 @@ PROJECTS = (
             Demo('projects/zac-help.mp4', 'Zac: built-in help written into source code comments'),
             Demo('projects/zac-fib.mp4', 'Zac: a Fibonacci sequence written into source code comments'),
         ),
+        presentation=Presentation(
+            source='projects/zac-presentation.mp4',
+            poster='projects/zac-presentation-poster.png',
+            description='Presentation of Zac with spoken commentary',
+        ),
+    ),
+    Project(
+        slug='codemaestro',
+        title='CodeMaestro',
+        dates='2018–2020',
+        technologies=('Rust',),
+        url='https://github.com/sumeet/CodeMaestro',
+        description_file='projects/codemaestro.md',
+        demos=(
+            Demo('projects/codemaestro-stack-interpreter.webp', 'CodeMaestro stack interpreter showing instruction choices and the result'),
+            Demo('projects/codemaestro-file-tree-completed.webp', 'Completed recursive file paths function in CodeMaestro'),
+            Demo('projects/codemaestro-particle-rename.webp', 'Renaming a Particle field in CodeMaestro alongside the code that uses it'),
+        ),
     ),
     Project(
         slug='golden',
         title='golden',
+        dates='2018',
+        technologies=('Python',),
         url='https://github.com/sumeet/golden',
         description_file='projects/golden.md',
         demos=(

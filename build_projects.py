@@ -6,7 +6,7 @@ from html import escape
 from markdown import markdown
 
 from page_template import asset_url, render_page
-from project_catalog import PROJECTS, Demo, Project
+from project_catalog import PROJECTS, Demo, Presentation, Project
 
 
 def render_demo(demo: Demo):
@@ -17,14 +17,32 @@ def render_demo(demo: Demo):
     return f'<img src="{source}" alt="{description}">'
 
 
+def render_presentation(presentation: Presentation | None):
+    if presentation is None:
+        return ''
+    source = escape('/' + presentation.source, quote=True)
+    poster = escape('/' + presentation.poster, quote=True)
+    description = escape(presentation.description, quote=True)
+    return f"""<details class="project-presentation">
+        <summary>Watch presentation</summary>
+        <video src="{source}" poster="{poster}" controls playsinline preload="none" aria-label="{description}">
+            <a href="{source}">Watch presentation</a>
+        </video>
+    </details>"""
+
+
 def render_project(project: Project):
     description = markdown(Path(project.description_file).read_text(encoding='utf-8'))
     demos = '\n'.join(render_demo(demo) for demo in project.demos)
     media_class = 'project-demos' if len(project.demos) > 1 else 'project-demo'
     return f"""<article class="project" id="{escape(project.slug, quote=True)}">
-        <h2 class="box project-title"><a href="{escape(project.url, quote=True)}">{escape(project.title)}</a></h2>
+        <header class="box project-heading">
+            <h2 class="project-title"><a href="{escape(project.url, quote=True)}">{escape(project.title)}</a></h2>
+            <p class="project-meta quiet">from <span class="project-date loud">{escape(project.dates)}</span> using <span class="loud">{escape(', '.join(project.technologies))}</span></p>
+        </header>
         <div class="project-copy">{description}</div>
         <div class="{media_class}">{demos}</div>
+        {render_presentation(project.presentation)}
     </article>"""
 
 

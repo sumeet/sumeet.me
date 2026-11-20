@@ -37,12 +37,16 @@ The PDF build derives italic faces from those fonts to preserve the original
 renderer’s appearance; no separate font files or manual preparation are needed.
 
 The projects preview is at http://localhost:8000/ and the résumé is at
-http://localhost:8000/resume/. Project descriptions live in `projects/zac.md`
-and `projects/golden.md`. `project_catalog.py` supplies their order, titles,
-links, and demo assets to the reusable `render_project()` function. New projects
+http://localhost:8000/resume/. Project descriptions live in `projects/zac.md`,
+`projects/codemaestro.md`, and `projects/golden.md`. `project_catalog.py` supplies their order, titles,
+dates, technologies, links, and demo assets to the reusable `render_project()` function. New projects
 need a Markdown description and a catalog entry, without copied layout HTML.
 Project-specific layout is in `projects.css`. After editing, run `make html`
 and refresh.
+Project headers use the old Reading page's compact Graublau titles, linked to
+their repositories, followed by a smaller "from <date> using <technologies>" line.
+CodeMaestro uses the original WebP assets: the stack interpreter and completed
+file-tree stills above the particle rename loop. The build copies them unchanged.
 Zac's Game of Life, help, and Fibonacci demos are visible together and loop
 independently, without visible controls or a selector.
 The MP4s are converted from the GIFs in the Zac repository's `.README_assets/`
@@ -54,7 +58,17 @@ ffmpeg -i input.gif -an -vf fps=30 -c:v libx264 -crf 23 -preset slow -pix_fmt yu
 
 The converted files are included in the repository, so normal builds do not need ffmpeg.
 
-Project titles use the bundled Liberation Sans Bold webfont in `fonts/`, matching
+Zac also has a collapsible presentation video with sound and native playback
+controls. `projects/zac-presentation.mp4` is the 08:30.000–09:41.700 excerpt from
+the supplied `~/Downloads/videoplayback.mp4`, ending before the next project.
+The original file is unchanged. To recreate the clip and its title-card poster:
+
+```sh
+ffmpeg -ss 510 -i ~/Downloads/videoplayback.mp4 -t 71.7 -map 0:v:0 -map 0:a:0 -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart projects/zac-presentation.mp4
+ffmpeg -ss 511.5 -i ~/Downloads/videoplayback.mp4 -frames:v 1 projects/zac-presentation-poster.png
+```
+
+The site name and navigation use the bundled Liberation Sans Bold webfont in `fonts/`, matching
 the old navigation's rendered appearance in Helium. Its SIL Open Font License
 is included alongside it.
 
