@@ -83,7 +83,7 @@ PROJECTS = (
         url='https://github.com/sumeet/golden',
         description_file='projects/golden.md',
         demos=(
-            Demo('projects/golden-demo.gif', 'Windows resizing as focus moves around a tiled desktop'),
+            Demo('projects/golden-demo.mp4', 'Windows resizing as focus moves around a tiled desktop'),
         ),
     ),
 )

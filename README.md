@@ -73,9 +73,21 @@ The MP4s are converted from the GIFs in the Zac repository's `.README_assets/`
 directory; hello-world is deliberately omitted. To regenerate an MP4 with ffmpeg:
 
 ```sh
-ffmpeg -i input.gif -an -vf fps=30 -c:v libx264 -crf 23 -preset slow -pix_fmt yuv420p -movflags +faststart output.mp4
+ffmpeg -i input.gif -an -vf fps=30 -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart output.mp4
 ```
 
+The three loops total about 2.18 MB. These encodes keep the original dimensions
+and 30 fps; regenerate from the source GIFs rather than recompressing the MP4s.
+
+golden also uses a muted, looping MP4. Its original GIF is retained for regeneration:
+
+```sh
+ffmpeg -i projects/golden-demo.gif -an -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart projects/golden-demo.mp4
+```
+
+The golden MP4 is about 1.14 MB, versus 12.81 MB for the GIF. The page references
+only the MP4. These are lossy encodes, checked against the originals for text
+readability; no resizing, denoising filters, or playback-speed changes are applied.
 The converted files are included in the repository, so normal builds do not need ffmpeg.
 
 Zac's presentation video sits below the help and Fibonacci demos in the right

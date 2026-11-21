@@ -22,7 +22,7 @@ window.addEventListener('message', (event) => {
     if (event.origin !== location.origin || event.data?.type !== 'rejectsynth:resize') return;
     const frame = playgrounds.find((candidate) => candidate.contentWindow === event.source);
     const height = event.data.height;
-    if (frame && Number.isFinite(height)) frame.height = Math.ceil(Math.max(340, Math.min(1000, height)));
+    if (frame && Number.isFinite(height)) frame.height = Math.ceil(Math.max(340, Math.min(2000, height)));
 });
 
 const stopOffscreen = new IntersectionObserver((entries) => {
