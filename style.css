@@ -173,7 +173,7 @@ body #container, body #header { width: min(960px, calc(100% - 40px)); }
 body #container { display: block; margin: 0 auto 2em; }
 body #header {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1em;
