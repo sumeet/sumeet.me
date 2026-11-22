@@ -146,6 +146,14 @@ form textarea { width: 390px; height: 250px; }
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Sumeet Wordmark";
+    src: url("fonts/SumeetWordmark-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body { font-family: "Lucida Grande", Verdana, Arial, sans-serif; }
 body h1, body h2, body h3, body h4, body h5, body h6 { font-family: "Graublau Web", Helvetica Neue,Arial,Helvetica,sans-serif; }
 body .site-name, body #nav {
@@ -171,7 +179,8 @@ body #header {
     gap: 1em;
     margin: 2em auto;
 }
-body .site-name { font-size: 1.5em; color: #111111; text-decoration: none; }
+body .site-name { font-size: 32px; line-height: 1; color: #111111; text-decoration: none; white-space: nowrap; }
+body .site-name-domain { font-family: "Sumeet Wordmark", "Liberation Sans", Arial, sans-serif; font-weight: normal; color: #666666; }
 body #nav { font-size: 1.5em; }
 body #nav ul {
     display: flex;

@@ -39,7 +39,7 @@ def render_page(content, *, title, active_page, sidebar=None, extra_head=''):
     </head>
     <body class="{escape(active_page, quote=True)}">
         <header id="header">
-            <a class="site-name" href="/">sumeet.me</a>
+            <a class="site-name" href="/">sumeet<span class="site-name-domain">.me</span></a>
             {render_navigation(active_page)}
         </header>
         <main id="container">

@@ -130,9 +130,13 @@ kept interval. Copy `solsolver-1440p-full.mp4` to `projects/solsolver-full.mp4`
 and run `make html`. The web export uses H.264 CRF 20 and AAC audio with MP4
 faststart; the large lossless master is kept outside the site repository.
 
-The site name and navigation use the bundled Liberation Sans Bold webfont in `fonts/`, matching
-the old navigation's rendered appearance in Helium. Its SIL Open Font License
-is included alongside it.
+The navigation uses the bundled Liberation Sans Bold webfont in `fonts/`, matching
+the old navigation's rendered appearance in Helium. The site name recreates the
+old 167×24 PNG's bold black name and regular grey domain as 32px HTML text.
+Liberation Sans is a close approximation; the exact font in that image is unknown,
+and its letter shapes differ from the bundled Graublau headings. The regular
+wordmark webfont contains only `.me` (about 3 KB); the bold face is shared with
+navigation. The SIL Open Font License is included alongside the fonts.
 
 Deployment uses the Python and Make buildpacks listed in `.buildpacks`.
 The Python buildpack reads `.python-version` and `requirements.txt`; the Make
