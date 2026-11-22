@@ -132,7 +132,7 @@ faststart; the large lossless master is kept outside the site repository.
 
 The navigation uses the bundled Liberation Sans Bold webfont in `fonts/`, matching
 the old navigation's rendered appearance in Helium. The site name recreates the
-old 167×24 PNG's bold black name and regular grey domain as 32px HTML text.
+old 167×24 PNG's bold black name and regular grey domain as 28px HTML text.
 Liberation Sans is a close approximation; the exact font in that image is unknown,
 and its letter shapes differ from the bundled Graublau headings. The regular
 wordmark webfont contains only `.me` (about 3 KB); the bold face is shared with
