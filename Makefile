@@ -27,7 +27,7 @@ html:
 	cp resume.md build/sumeet.txt
 
 serve: html pdf
-	cd build && $(PYTHON) -m http.server 8000 --bind 127.0.0.1
+	SITE_DEV=1 $(PYTHON) -m gunicorn site_server:application --bind 127.0.0.1:8000 --workers 1 --threads 4
 
 # The synth source lives in its own repository; Dokku serves this static export.
 rejectsynth:
@@ -38,6 +38,9 @@ open_html:
 	open build/index.html
 
 test_html: html open_html
+
+test: html pdf
+	$(PYTHON) -m unittest discover -s tests -v
 
 pdf:
 	mkdir -p build
@@ -53,4 +56,4 @@ clean:
 	rm -rf build
 	rm -rf __pycache__
 
-.PHONY: default setup html serve rejectsynth open_html test_html pdf open_pdf test_pdf clean
+.PHONY: default setup html serve rejectsynth open_html test_html test pdf open_pdf test_pdf clean

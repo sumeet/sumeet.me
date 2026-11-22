@@ -69,6 +69,7 @@ def render_html():
     projects = '\n'.join(render_project(project) for project in
                          sorted(PROJECTS, key=lambda project: project.latest_year, reverse=True))
     extra_head = f"""
+        <base target="_blank">
         <link rel="stylesheet" href="{asset_url('projects.css')}">
         <script src="{asset_url('projects.js')}" defer></script>
 """

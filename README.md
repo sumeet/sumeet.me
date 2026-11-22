@@ -36,6 +36,14 @@ WeasyPrint and the bundled fonts. `make clean` removes the generated output.
 The PDF build derives italic faces from those fonts to preserve the original
 renderer’s appearance; no separate font files or manual preparation are needed.
 
+Local preview and Dokku both serve `build/` through Gunicorn and WhiteNoise
+(`site_server.py`). This supports HTTP byte ranges, so videos can seek to an
+unbuffered position without first downloading the entire file. `make serve`
+enables development file refresh; production indexes the built files on startup.
+After dependency changes, update an existing environment with
+`.venv/bin/python -m pip install -r requirements.txt`. `make test` builds the
+site and checks real HTTP range responses, media bytes, and existing routes.
+
 The projects preview is at http://localhost:8000/ and the résumé is at
 http://localhost:8000/resume/. Project descriptions live in `projects/solsolver.md`, `projects/zac.md`,
 `projects/codemaestro.md`, `projects/rejectsynth.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
@@ -46,6 +54,8 @@ Project-specific layout is in `projects.css`. After editing, run `make html`
 and refresh.
 Project headers use the old Reading page's compact Graublau titles, linked to
 their repositories, followed by a smaller "from <date> using <technologies>" line.
+The projects page sets a default new-tab target for all links, including its
+navigation and Markdown links; the résumé page keeps its existing behavior.
 CodeMaestro uses the original WebP assets: the stack interpreter and completed
 file-tree stills above the particle rename loop. The build copies them unchanged.
 
