@@ -35,6 +35,20 @@ class Project:
 # Rendered newest first by latest_year; descriptions are handwritten Markdown files.
 PROJECTS = (
     Project(
+        slug='solsolver',
+        title='solsolver',
+        dates='2022',
+        technologies=('Rust', 'Python', 'OpenCV'),
+        url='https://github.com/sumeet/solsolver',
+        description_file='projects/solsolver.md',
+        demos=(),
+        presentation=Presentation(
+            source='projects/solsolver-full.mp4',
+            poster='projects/solsolver-poster.webp',
+            description="solsolver recognizing, solving, and playing a complete game of Fortune's Foundation, with terminal output and game audio",
+        ),
+    ),
+    Project(
         slug='zac',
         title='Zac',
         dates='2021',

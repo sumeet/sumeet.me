@@ -1,0 +1,1 @@
+I couldn't beat this [really hard solitaire game](https://www.zachtronics.com/solitaire-collection/), so I wrote a solver using the [A* algorithm](https://en.wikipedia.org/wiki/A%2A_search_algorithm) and wrote an auto-player using computer vision and mouse automation.

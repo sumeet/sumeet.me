@@ -50,8 +50,10 @@ def render_project(project: Project):
         media = f'''<iframe class="project-playground" src="{asset_url(project.playground)}"
             title="{escape(project.title, quote=True)} interactive music editor"
             loading="lazy" allow="autoplay" height="490"></iframe>'''
-    technologies = ' and '.join(f'<span class="loud">{escape(technology)}</span>'
-                                for technology in project.technologies)
+    technology_names = [f'<span class="loud">{escape(technology)}</span>'
+                        for technology in project.technologies]
+    technologies = (', '.join(technology_names[:-1]) + ' and ' + technology_names[-1]
+                    if len(technology_names) > 1 else ''.join(technology_names))
     return f"""<article class="project" id="{escape(project.slug, quote=True)}">
         <header class="box project-heading">
             <h2 class="project-title"><a href="{escape(project.url, quote=True)}">{escape(project.title)}</a></h2>
