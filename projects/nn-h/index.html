@@ -27,7 +27,9 @@
       window.nnDemo = app;
       loading.remove();
     } catch (error) {
-      loading.textContent = 'Could not load the drawing pad. Try refreshing.';
+      loading.textContent = /webgl/i.test(String(error))
+        ? 'The drawing pad needs WebGL, which is unavailable in this browser. Try restarting your browser or enabling graphics acceleration.'
+        : 'Could not load the drawing pad. Try refreshing.';
       loading.style.color = '#9b2937';
       console.error(error);
     }

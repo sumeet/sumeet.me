@@ -46,7 +46,8 @@ site and checks real HTTP range responses, media bytes, and existing routes.
 
 The projects preview is at http://localhost:8000/ and the résumé is at
 http://localhost:8000/resume/. Project descriptions live in `projects/solsolver.md`, `projects/zac.md`,
-`projects/codemaestro.md`, `projects/rejectsynth.md`, `projects/nn-h.md`, `projects/exac.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
+`projects/codemaestro.md`, `projects/rejectsynth.md`, `projects/nn-h.md`, `projects/exac.md`,
+`projects/matcharoni.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
 dates, technologies, links, and demo assets to the reusable `render_project()` function. New projects
 need a Markdown description and a catalog entry, without copied layout HTML.
 Projects are sorted newest first. An optional internal `sort_date` resolves
@@ -62,6 +63,48 @@ The projects page sets a default new-tab target for all links, including its
 navigation and Markdown links; the résumé page keeps its existing behavior.
 CodeMaestro uses the original WebP assets: the stack interpreter and completed
 file-tree stills above the particle rename loop. The build copies them unchanged.
+
+Matcharoni is dated December 2021, placing it after EXAc and Zac in that year.
+Its media is Sumeet's own [introduction video](https://www.youtube.com/watch?v=2GnqHe2wx_M),
+titled "Matcharoni ('n cheese) - langjam 0002" on the `sumeeta` channel.
+The local poster is the video's YouTube `hqdefault.jpg` thumbnail.
+The shared presentation renderer supports an optional `embed_url`: it creates
+the YouTube privacy-enhanced player only when the visitor presses play, so no
+YouTube player is loaded with the page. Without JavaScript, the poster links
+directly to YouTube. The following archive research is retained for future use.
+JT's results video is [Langjam #0002 Winners!](https://www.youtube.com/watch?v=acZx0hDs_u4),
+identified through [this Reddit announcement](https://www.reddit.com/r/ProgrammingLanguages/comments/rmuq92/langjam_0002_winners_systems_with_jt/).
+The [December 23, 2021 Wayback page](https://web.archive.org/web/20211223232611/https://www.youtube.com/watch?v=acZx0hDs_u4)
+confirms a 949-second video by Systems with JT and explicitly mentions Matcharoni.
+As checked November 22, 2026, the archived page survives, but the playable media
+has not been recovered: Wayback's YouTube media lookup returns 404, and neither
+of the two progressive MP4 URLs in the archived player has a CDX capture.
+The same media lookup still serves the Zac results recording successfully.
+An [Archivarix exact-ID search](https://tube.archivarix.net/?q=acZx0hDs_u4)
+also returned metadata without a playable file. Its completed reupload search
+found no copy on Archive.org, Dailymotion, or RuTube. The archived player's
+16 adaptive audio/video URLs and English caption URL also had no CDX captures.
+After manual CAPTCHA verification, [Filmot](https://filmot.com/video/acZx0hDs_u4)
+showed a partial metadata record and "Video was not found on archive.org";
+no transcript was displayed. Ghostarchive's full-URL search returned no archives,
+and [PreserveTube](https://preservetube.com/watch?v=acZx0hDs_u4) returned
+"Archive not found". Context Free's current YouTube channel search for `langjam`
+returned the first jam's livestream and retrospective, with no second-jam result.
+Steve Klabnik's [current channel](https://www.youtube.com/@steveklabnik/streams)
+lists one stream: [LangJam: Let's make a programming language! (Part 1)](https://www.youtube.com/watch?v=bze2FAUu32Q),
+dated August 20, 2021. Its description explicitly identifies it as work on his
+own first-jam entry. His Twitch video archive showed older gaming recordings;
+no second-jam roundup was found there. Filmot title searches and channel-filtered
+caption searches (including unavailable videos) also found no second-jam roundup
+by Klabnik or Context Free. These indexes are incomplete, so this is not proof
+that neither creator covered it.
+
+One unresolved Context Free record is [`cGKFHofvzpo`](https://filmot.com/video/cGKFHofvzpo):
+Filmot dates it December 5, 2021, but titles it "Trying out JT's langjam - Theme:
+\"first-class comments\"" (the first jam's theme). It has only partial metadata,
+zero recorded views and no transcript. YouTube reports it unavailable, and
+Wayback CDX found neither a watch-page capture nor a YouTube media capture.
+Do not treat this date/title mismatch as confirmed second-jam coverage.
 
 rejectsynth is embedded as a lazy-loaded, same-origin iframe. Its source remains
 in `../rejectsynth/browser` and shares the desktop extension's editor behavior.
@@ -94,6 +137,8 @@ make html
 Set `NN_H_DIR=/path/to/nn-h` for another checkout. Training is a separate step
 documented in that repository; visitors load saved weights and recognize digits
 locally through WebAssembly. Site builds only copy the exported assets.
+The egui interface needs WebGL; if browser graphics are unavailable, the loader
+reports that explicitly instead of suggesting that refreshing alone will fix it.
 
 EXAc has three tabbed examples: The Wormhole (selected initially), Valhalla,
 and Unknown Network 2. Each tab places its original source, compiled assembly,
@@ -335,11 +380,10 @@ The master is a large local review artifact, not a website download. The
 original solver repo is untouched, all private capture services/sink were
 cleaned up, and nothing was deployed.
 
-Included in the projects catalog: rejectsynth, nn.h.rs, solsolver, EXAc, Zac, CodeMaestro, golden.
+Included in the projects catalog: rejectsynth, nn.h.rs, solsolver, Matcharoni, EXAc, Zac, CodeMaestro, golden.
 
 | Candidate | What it could show |
 |---|---|
-| Matcharoni | Pattern-matching language; existing introduction video |
 | ClipShare | Copy text or images on one computer, paste on another |
 | Goylang | Self-hosting compiler targeting Go |
 | EXAc | Higher-level source compiled to EXAPUNKS assembly and run in the game |

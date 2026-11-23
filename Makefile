@@ -20,6 +20,7 @@ html:
 	cp projects/*.gif build/projects/
 	cp projects/*.mp4 build/projects/
 	cp projects/*.png build/projects/
+	cp projects/*.jpg build/projects/
 	cp projects/*.webp build/projects/
 	cp -R projects/rejectsynth build/projects/
 	cp -R projects/nn-h build/projects/

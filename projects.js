@@ -3,9 +3,30 @@ document.querySelectorAll('.project video[autoplay]').forEach((video) => {
 });
 
 document.querySelectorAll('.project-presentation').forEach((presentation) => {
-    const video = presentation.querySelector('video');
     const play = presentation.querySelector('.project-presentation-play');
     play.hidden = false;
+    if (presentation.dataset.embed) {
+        const link = presentation.querySelector('.project-presentation-link');
+        const start = () => {
+            const frame = document.createElement('iframe');
+            frame.src = `${presentation.dataset.embed}?autoplay=1&rel=0`;
+            frame.title = link.querySelector('img').alt;
+            frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+            frame.allowFullscreen = true;
+            frame.referrerPolicy = 'strict-origin-when-cross-origin';
+            link.replaceWith(frame);
+            play.hidden = true;
+            frame.focus();
+        };
+        play.addEventListener('click', start, { once: true });
+        link.addEventListener('click', (event) => {
+            if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            play.click();
+        });
+        return;
+    }
+    const video = presentation.querySelector('video');
     play.addEventListener('click', () => {
         // Leave the media URL unassigned until the visitor explicitly plays it.
         if (!video.hasAttribute('src')) video.src = video.dataset.src;

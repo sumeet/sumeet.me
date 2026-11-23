@@ -21,13 +21,21 @@ def render_demo(demo: Demo):
 def render_presentation(presentation: Presentation | None):
     if presentation is None:
         return ''
-    source = escape('/' + presentation.source, quote=True)
+    source = escape(presentation.source if presentation.embed_url else '/' + presentation.source, quote=True)
     poster = escape('/' + presentation.poster, quote=True)
     description = escape(presentation.description, quote=True)
-    return f"""<div class="project-presentation">
-        <video data-src="{source}" poster="{poster}" playsinline preload="none" aria-label="{description}">
+    if presentation.embed_url:
+        attributes = f' data-embed="{escape(presentation.embed_url, quote=True)}"'
+        player = f'''<a class="project-presentation-link" href="{source}">
+            <img src="{poster}" alt="{description}" loading="lazy">
+        </a>'''
+    else:
+        attributes = ''
+        player = f'''<video data-src="{source}" poster="{poster}" playsinline preload="none" aria-label="{description}">
             <a href="{source}">Watch presentation</a>
-        </video>
+        </video>'''
+    return f"""<div class="project-presentation"{attributes}>
+        {player}
         <button class="project-presentation-play" type="button" aria-label="Play video" title="Play video" hidden>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         </button>

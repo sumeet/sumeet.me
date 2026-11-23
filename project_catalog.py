@@ -13,6 +13,7 @@ class Presentation:
     source: str
     poster: str
     description: str
+    embed_url: str | None = None
 
 
 @dataclass(frozen=True)
@@ -59,6 +60,22 @@ class Project:
 # Historical work dates break year ties; present-day demo maintenance does not.
 # Descriptions are handwritten Markdown files.
 PROJECTS = (
+    Project(
+        slug='matcharoni',
+        title='Matcharoni',
+        dates='2021',
+        sort_date='2021-12-10',
+        technologies=('Rust',),
+        url='https://github.com/sumeet/matcharoni',
+        description_file='projects/matcharoni.md',
+        demos=(),
+        presentation=Presentation(
+            source='https://www.youtube.com/watch?v=2GnqHe2wx_M',
+            poster='projects/matcharoni-poster.jpg',
+            description="Matcharoni ('n cheese): introduction and demonstration by Sumeet",
+            embed_url='https://www.youtube-nocookie.com/embed/2GnqHe2wx_M',
+        ),
+    ),
     Project(
         slug='exac',
         title='EXAc',

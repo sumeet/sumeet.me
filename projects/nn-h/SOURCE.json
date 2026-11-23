@@ -2,6 +2,6 @@
   "repository": "https://github.com/sumeet/nn-h",
   "revision": "eda58c2701fe4b65f19deb2e18771f6652502280",
   "uncommitted_changes": true,
-  "build_sha256": "23ccb11b8fed0d758ec69c36e3288ac148b5ef4e4aa23943f04edb278b970d21",
+  "build_sha256": "d5e36f758a216e44dae1e72f327399ce2543862dba32d64aaf07fcd4013c74d9",
   "rebuild": "make nn-h NN_H_DIR=../nn-h"
 }
