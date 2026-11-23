@@ -1,0 +1,1 @@
+Based on [the excellent nn.h video series by Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VZPZKggcql-MmjaBdZKeDMw), I coded a minimal neural network that runs on the CPU in Rust, and expanded it to work with the [MNIST dataset](https://github.com/cvdfoundation/mnist) and recognize handwriting.

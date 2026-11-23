@@ -46,10 +46,14 @@ site and checks real HTTP range responses, media bytes, and existing routes.
 
 The projects preview is at http://localhost:8000/ and the résumé is at
 http://localhost:8000/resume/. Project descriptions live in `projects/solsolver.md`, `projects/zac.md`,
-`projects/codemaestro.md`, `projects/rejectsynth.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
+`projects/codemaestro.md`, `projects/rejectsynth.md`, `projects/nn-h.md`, `projects/exac.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
 dates, technologies, links, and demo assets to the reusable `render_project()` function. New projects
 need a Markdown description and a catalog entry, without copied layout HTML.
-Projects are sorted newest first, using the latest year in each displayed date range.
+Projects are sorted newest first. An optional internal `sort_date` resolves
+ties within a displayed year; otherwise the latest year in the date range is
+used. These reflect original project work, not later portfolio maintenance:
+nn.h.rs has commits from 15–20 May 2023, before rejectsynth's September–November
+2023 history. Public dates remain years.
 Project-specific layout is in `projects.css`. After editing, run `make html`
 and refresh.
 Project headers use the old Reading page's compact Graublau titles, linked to
@@ -76,6 +80,54 @@ Dokku deployment still only need the existing Python/Make setup. The editor has
 an inline Play/Stop link, fixed 50% gain, and optional Vim bindings behind its
 top-right icon. It resizes to its content and stops playback when scrolled out
 of view. The 2023 date comes from the original September–November commit history.
+
+nn.h.rs uses the same iframe layout with a compact, light-themed egui drawing
+pad. Source lives in `../nn-h`, including the original CPU neural network,
+training utility, saved weights, and browser UI. The imported `projects/nn-h/`
+directory is generated, not an editable second implementation. Rebuild with:
+
+```sh
+make nn-h
+make html
+```
+
+Set `NN_H_DIR=/path/to/nn-h` for another checkout. Training is a separate step
+documented in that repository; visitors load saved weights and recognize digits
+locally through WebAssembly. Site builds only copy the exported assets.
+
+EXAc has three tabbed examples: The Wormhole (selected initially), Valhalla,
+and Unknown Network 2. Each tab places its original source, compiled assembly,
+and native EXAPUNKS GIF side by side on desktop, stacking on narrower screens.
+The columns have no headings; the example choices sit on one line above all three columns.
+The notation legend follows the complete example.
+`code_examples.py` renders the shared layout from the catalog; `projects.js`
+loads only the selected GIF when the section comes into view, replacing it
+with its still poster offscreen. Arrow keys switch examples. The selector uses
+regular body type and grey choices; the selected example is bold with a pale
+blue rounded background, borrowing the main navigation's colors. The three
+desktop columns have equal widths and gaps across the content width, and code
+panes show thin scrollbars only when their code overflows. Chromium/WebKit gets a minimal 3px thumb override to
+keep the scrollbar visible when code overflows; other browsers use native
+`scrollbar-width: thin`. These demo GIFs
+loop whenever visible, including when the browser requests reduced motion.
+
+`projects/exac/` contains matched source/assembly snapshots and web media.
+`provenance.json` records their upstream revision, hashes, and observed game
+results. These examples come from the October 2021 EXAc history, placing the
+project after Zac chronologically. The source checkout is `../exapunks`.
+To update an example, compile its `soln.exc` with `compiler01`, load that exact
+assembly into a separate game save, and record the corresponding replay before
+replacing the source, assembly, and media together. Compiler-generated labels
+can change between invocations; retain the assembly actually used in-game.
+
+The original native GIF exports, isolated saves, and capture evidence are in
+`~/exac-portfolio-2026-11-22/`. The site uses byte-for-byte copies of those GIFs
+at their native 816×603 resolution and timing, with infinite looping. They total
+about 10.2 MB, with only the selected example's GIF requested. `export-tabs.py`
+in the capture folder verifies source/save agreement, copies the GIFs, and
+refreshes their provenance. Earlier MP4 conversions are archived outside the site.
+Ordinary `make html` builds only copy these assets; they need neither the Rust
+compiler nor the game. No game saves are shipped with the site.
 
 Zac's Game of Life, help, and Fibonacci demos are visible together and loop
 independently, without visible controls or a selector.
@@ -283,7 +335,7 @@ The master is a large local review artifact, not a website download. The
 original solver repo is untouched, all private capture services/sink were
 cleaned up, and nothing was deployed.
 
-Included in the projects catalog: rejectsynth, solsolver, Zac, CodeMaestro, golden.
+Included in the projects catalog: rejectsynth, nn.h.rs, solsolver, EXAc, Zac, CodeMaestro, golden.
 
 | Candidate | What it could show |
 |---|---|

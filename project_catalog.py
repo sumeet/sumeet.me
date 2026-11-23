@@ -16,6 +16,23 @@ class Presentation:
 
 
 @dataclass(frozen=True)
+class Playground:
+    source: str
+    description: str
+    height: int = 490
+
+
+@dataclass(frozen=True)
+class CodeExample:
+    slug: str
+    title: str
+    source: str
+    assembly: tuple[str, ...]
+    replay: str
+    poster: str
+
+
+@dataclass(frozen=True)
 class Project:
     slug: str
     title: str
@@ -25,15 +42,64 @@ class Project:
     description_file: str
     demos: tuple[Demo, ...]
     presentation: Presentation | None = None
-    playground: str | None = None
+    playground: Playground | None = None
+    sort_date: str | None = None
+    examples: tuple[CodeExample, ...] = ()
+    default_example: str | None = None
 
     @property
     def latest_year(self):
         return max(int(year) for year in re.findall(r'\d{4}', self.dates))
 
+    @property
+    def sort_key(self):
+        return self.sort_date or f'{self.latest_year:04d}-01-01'
 
-# Rendered newest first by latest_year; descriptions are handwritten Markdown files.
+
+# Historical work dates break year ties; present-day demo maintenance does not.
+# Descriptions are handwritten Markdown files.
 PROJECTS = (
+    Project(
+        slug='exac',
+        title='EXAc',
+        dates='2021',
+        sort_date='2021-10-19',
+        technologies=('Rust',),
+        url='https://github.com/sumeet/EXAc',
+        description_file='projects/exac.md',
+        demos=(),
+        examples=tuple(
+            CodeExample(
+                slug=slug,
+                title=title,
+                source=f'projects/exac/{slug}/source.exc',
+                assembly=tuple(f'projects/exac/{slug}/{name}.exa' for name in names),
+                replay=f'projects/exac/{slug}/replay.gif',
+                poster=f'projects/exac/{slug}/poster.webp',
+            )
+            for slug, title, names in (
+                ('wormhole', 'The Wormhole', ('xa',)),
+                ('valhalla', 'Valhalla', ('xa', 'xb')),
+                ('unknown-network', 'Unknown Network 2', ('xa', 'xb')),
+            )
+        ),
+        default_example='wormhole',
+    ),
+    Project(
+        slug='nn-h',
+        title='nn.h.rs',
+        dates='2023',
+        sort_date='2023-05-20',
+        technologies=('Rust',),
+        url='https://github.com/sumeet/nn-h',
+        description_file='projects/nn-h.md',
+        demos=(),
+        playground=Playground(
+            source='projects/nn-h/index.html',
+            description='nn.h.rs interactive handwriting recognition demo',
+            height=302,
+        ),
+    ),
     Project(
         slug='solsolver',
         title='solsolver',
@@ -70,7 +136,7 @@ PROJECTS = (
         slug='codemaestro',
         title='CodeMaestro',
         dates='2018–2020',
-        technologies=('Rust',),
+        technologies=('Rust', 'Dear ImGui'),
         url='https://github.com/sumeet/CodeMaestro',
         description_file='projects/codemaestro.md',
         demos=(
@@ -83,11 +149,15 @@ PROJECTS = (
         slug='rejectsynth',
         title='rejectsynth',
         dates='2023',
+        sort_date='2023-11-26',
         technologies=('Rust', 'VSCode'),
         url='https://github.com/sumeet/rejectsynth',
         description_file='projects/rejectsynth.md',
         demos=(),
-        playground='projects/rejectsynth/index.html',
+        playground=Playground(
+            source='projects/rejectsynth/index.html',
+            description='rejectsynth interactive music editor',
+        ),
     ),
     Project(
         slug='golden',

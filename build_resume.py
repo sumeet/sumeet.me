@@ -32,7 +32,7 @@ def render_html():
 """
     return render_page(
         resume.html(),
-        title='Résumé — Sumeet Agarwal',
+        title='Resume — Sumeet Agarwal',
         active_page='resume',
         sidebar=sidebar,
         extra_head=extra_head,

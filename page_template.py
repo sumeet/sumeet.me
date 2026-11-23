@@ -19,7 +19,7 @@ def render_navigation(active_page):
     for page, url, label in NAVIGATION:
         current = ' aria-current="page"' if page == active_page else ''
         links.append(f'<li><a href="{url}"{current}>{label}</a></li>')
-    return f'<nav id="nav" aria-label="Main"><ul>{"".join(links)}</ul></nav>'
+    return f'<nav id="nav" aria-label="Main"><ul class="site-choices">{"".join(links)}</ul></nav>'
 
 
 def render_page(content, *, title, active_page, sidebar=None, extra_head=''):

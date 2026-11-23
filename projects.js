@@ -31,3 +31,55 @@ const stopOffscreen = new IntersectionObserver((entries) => {
     }
 });
 playgrounds.forEach((frame) => stopOffscreen.observe(frame));
+
+document.querySelectorAll('.project-examples').forEach((examples) => {
+    const tabs = [...examples.querySelectorAll('[role="tab"]')];
+    const panels = [...examples.querySelectorAll('[role="tabpanel"]')];
+    let visible = false;
+
+    function updateReplayImages() {
+        for (const panel of panels) {
+            const image = panel.querySelector('.example-replay[data-src]');
+            const animate = !panel.hidden && visible && !document.hidden;
+            const source = animate ? image.dataset.src : image.dataset.poster;
+            if (image.getAttribute('src') !== source) image.src = source;
+        }
+    }
+
+    function select(tab) {
+        for (const candidate of tabs) {
+            const selected = candidate === tab;
+            candidate.setAttribute('aria-selected', String(selected));
+            candidate.tabIndex = selected ? 0 : -1;
+        }
+        for (const panel of panels) {
+            panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+            panel.querySelectorAll('.example-code-scroll').forEach((code) => {
+                code.scrollTop = 0;
+                code.scrollLeft = 0;
+            });
+        }
+        updateReplayImages();
+    }
+
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => select(tab));
+        tab.addEventListener('keydown', (event) => {
+            let next;
+            if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+            if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+            if (event.key === 'Home') next = 0;
+            if (event.key === 'End') next = tabs.length - 1;
+            if (next === undefined) return;
+            event.preventDefault();
+            tabs[next].focus();
+            select(tabs[next]);
+        });
+    });
+
+    new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        updateReplayImages();
+    }).observe(examples);
+    document.addEventListener('visibilitychange', updateReplayImages);
+});

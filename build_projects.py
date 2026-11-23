@@ -7,6 +7,7 @@ from markdown import markdown
 
 from page_template import asset_url, render_page
 from project_catalog import PROJECTS, Demo, Presentation, Project
+from code_examples import render_code_examples
 
 
 def render_demo(demo: Demo):
@@ -47,9 +48,12 @@ def render_project(project: Project):
     media_class = 'project-demos' if len(project.demos) > 1 else 'project-demo'
     media = f'<div class="{media_class}">{demos}</div>' if demos else ''
     if project.playground:
-        media = f'''<iframe class="project-playground" src="{asset_url(project.playground)}"
-            title="{escape(project.title, quote=True)} interactive music editor"
-            loading="lazy" allow="autoplay" height="490"></iframe>'''
+        playground = project.playground
+        media = f'''<iframe class="project-playground" src="{asset_url(playground.source)}"
+            title="{escape(playground.description, quote=True)}"
+            loading="lazy" allow="autoplay" height="{playground.height}"></iframe>'''
+    if project.examples:
+        media = render_code_examples(project)
     technology_names = [f'<span class="loud">{escape(technology)}</span>'
                         for technology in project.technologies]
     technologies = (', '.join(technology_names[:-1]) + ' and ' + technology_names[-1]
@@ -67,7 +71,7 @@ def render_project(project: Project):
 
 def render_html():
     projects = '\n'.join(render_project(project) for project in
-                         sorted(PROJECTS, key=lambda project: project.latest_year, reverse=True))
+                         sorted(PROJECTS, key=lambda project: project.sort_key, reverse=True))
     extra_head = f"""
         <base target="_blank">
         <link rel="stylesheet" href="{asset_url('projects.css')}">

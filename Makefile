@@ -1,6 +1,7 @@
 PYTHON_VERSION := $(shell cat .python-version)
 PYTHON ?= $(if $(wildcard .venv/bin/python),$(CURDIR)/.venv/bin/python,python$(PYTHON_VERSION))
 REJECTSYNTH_DIR ?= ../rejectsynth
+NN_H_DIR ?= ../nn-h
 
 default: html pdf
 
@@ -21,6 +22,8 @@ html:
 	cp projects/*.png build/projects/
 	cp projects/*.webp build/projects/
 	cp -R projects/rejectsynth build/projects/
+	cp -R projects/nn-h build/projects/
+	cp -R projects/exac build/projects/
 	cp *.otf build/
 	cp darkreader.js build/
 	cp favicon.ico build/
@@ -33,6 +36,10 @@ serve: html pdf
 rejectsynth:
 	cd "$(REJECTSYNTH_DIR)/browser" && npm ci && npm run wasm && npm run build
 	$(PYTHON) sync_rejectsynth.py "$(REJECTSYNTH_DIR)"
+
+nn-h:
+	cd "$(NN_H_DIR)" && bash web/build.sh
+	$(PYTHON) sync_nn_h.py "$(NN_H_DIR)"
 
 open_html:
 	open build/index.html
@@ -56,4 +63,4 @@ clean:
 	rm -rf build
 	rm -rf __pycache__
 
-.PHONY: default setup html serve rejectsynth open_html test_html test pdf open_pdf test_pdf clean
+.PHONY: default setup html serve rejectsynth nn-h open_html test_html test pdf open_pdf test_pdf clean

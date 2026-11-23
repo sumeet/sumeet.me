@@ -1,0 +1,131 @@
+{
+  "repository": "https://github.com/sumeet/EXAc",
+  "revision": "4e9292d9460e5f520d1c38819d9444947f306981",
+  "captured": "2026-11-22",
+  "compiler_build": "cargo +1.97.1 build --locked --release --manifest-path compiler01/Cargo.toml",
+  "compile": "compiler01/target/release/compiler01 <source> <zero-based EXA index>",
+  "capture": "EXAPUNKS native Record Solution GIF, test run 1, isolated save copies",
+  "assembly_normalization": "uppercase, as displayed by EXAPUNKS; no instruction changes",
+  "web_encoding": "Unmodified native EXAPUNKS GIF exports, looping infinitely.",
+  "examples": [
+    {
+      "slug": "valhalla",
+      "source": "32-valhalla/soln.exc",
+      "source_sha256": "01a7b2712a6b6b9f76fac404c8f4bca927be99098f160c9ff26d76653f89532e",
+      "assembly": [
+        {
+          "file": "valhalla/xa.exa",
+          "sha256": "263d99e35a56bb3606c75198bab496846e0f656387e15ce1c6e536a11217d773"
+        },
+        {
+          "file": "valhalla/xb.exa",
+          "sha256": "da303d707323a945b60b32035887b3631539b75ca063782a46cf375412c26729"
+        }
+      ],
+      "save_sha256": "8e5a7199b2c3d3a9c30925da370382e787417dc04dc36c100dbb1f287dcdbba1",
+      "validation": {
+        "opponent": "=plastered (NPC)",
+        "wins": 100,
+        "draws": 0,
+        "losses": 0
+      },
+      "native_gif": {
+        "file": "EXAPUNKS - Valhalla (=plastered, 2026-11-22-10-36-18).gif",
+        "sha256": "a666194b90fab02e53b1c505a1fba49ec1518c5ff56c34532cf5aeff74e8b13a",
+        "width": 816,
+        "height": 603,
+        "frames": 261,
+        "duration_seconds": 7.89,
+        "bytes": 2618730
+      },
+      "replay": {
+        "file": "valhalla/replay.gif",
+        "sha256": "a666194b90fab02e53b1c505a1fba49ec1518c5ff56c34532cf5aeff74e8b13a",
+        "width": 816,
+        "height": 603,
+        "frames": 261,
+        "duration_seconds": 7.89,
+        "bytes": 2618730,
+        "loop": "infinite"
+      }
+    },
+    {
+      "slug": "wormhole",
+      "source": "44-the-wormhole/soln.exc",
+      "source_sha256": "217e579779250fb7c4719b02185e1c27864ff1830bde560e4742125399c4c951",
+      "assembly": [
+        {
+          "file": "wormhole/xa.exa",
+          "sha256": "23ec3aef82b32019a7fc4db6667a7899952f743aef9af21f8914c9218c48e107"
+        }
+      ],
+      "save_sha256": "2cfdcf3c37a3b450559bb8eba919e33898ca76de5757683dcf81178b92053a0f",
+      "validation": {
+        "opponent": "x10x10x (NPC)",
+        "wins": 96,
+        "draws": 0,
+        "losses": 4
+      },
+      "native_gif": {
+        "file": "EXAPUNKS - The Wormhole (x10x10x, 2026-11-22-10-34-41).gif",
+        "sha256": "9235a7bdda558093307842db6ef7a43b9036165f8ddc718c79fcb30ceb2811e3",
+        "width": 816,
+        "height": 603,
+        "frames": 138,
+        "duration_seconds": 4.2,
+        "bytes": 2032304
+      },
+      "replay": {
+        "file": "wormhole/replay.gif",
+        "sha256": "9235a7bdda558093307842db6ef7a43b9036165f8ddc718c79fcb30ceb2811e3",
+        "width": 816,
+        "height": 603,
+        "frames": 138,
+        "duration_seconds": 4.2,
+        "bytes": 2032304,
+        "loop": "infinite"
+      }
+    },
+    {
+      "slug": "unknown-network",
+      "source": "54-unknown-network-2/soln.exc",
+      "source_sha256": "6cb36b0a49f9cac9c96d72058d22465f120cb0a42ec746ead61a25d652e98b7b",
+      "assembly": [
+        {
+          "file": "unknown-network/xa.exa",
+          "sha256": "5887eb748a1a965643105ec736d370e503edbd541817e9e1b3ab6335953d4763"
+        },
+        {
+          "file": "unknown-network/xb.exa",
+          "sha256": "d2a035a9e5886a1e84ad2fbf42d09fec43f0df7db9ae82dfcc12ce5f5af8631b"
+        }
+      ],
+      "save_sha256": "bfcf27720d0c5d03774d486af6741a52d338e76fe5715168fa4db1e7f7d42ce6",
+      "validation": {
+        "test_cases_passed": 100,
+        "cycles": 624,
+        "size": 65,
+        "activity": 59
+      },
+      "native_gif": {
+        "file": "EXAPUNKS - UNKNOWN NETWORK 2 (624, 65, 59, 2026-11-22-10-26-47).gif",
+        "sha256": "ee5725b5e04b68f2fdf0bc26751e7aac0151ed2b19fe537345f5bbf5e3a6ef89",
+        "width": 816,
+        "height": 603,
+        "frames": 1149,
+        "duration_seconds": 34.53,
+        "bytes": 5591282
+      },
+      "replay": {
+        "file": "unknown-network/replay.gif",
+        "sha256": "ee5725b5e04b68f2fdf0bc26751e7aac0151ed2b19fe537345f5bbf5e3a6ef89",
+        "width": 816,
+        "height": 603,
+        "frames": 1149,
+        "duration_seconds": 34.53,
+        "bytes": 5591282,
+        "loop": "infinite"
+      }
+    }
+  ]
+}

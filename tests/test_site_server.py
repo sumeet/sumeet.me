@@ -87,6 +87,8 @@ class StaticServerTests(unittest.TestCase):
             ('/sumeet.pdf', 'application/pdf'),
             ('/projects/rejectsynth/', 'text/html'),
             ('/' + str(wasm.relative_to(ROOT)), 'application/wasm'),
+            ('/projects/nn-h/', 'text/html'),
+            ('/projects/nn-h/pkg/nn_h_bg.wasm', 'application/wasm'),
         ]:
             with self.subTest(path=path):
                 status, headers, _ = self.request('HEAD', path)
