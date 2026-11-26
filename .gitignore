@@ -3,4 +3,5 @@
 .venv/
 *.swp
 build
+/projects/nn-h/
 __pycache__

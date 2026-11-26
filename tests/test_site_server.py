@@ -90,8 +90,6 @@ class StaticServerTests(unittest.TestCase):
             ('/sumeet.pdf', 'application/pdf'),
             ('/projects/rejectsynth/', 'text/html'),
             ('/' + str(wasm.relative_to(ROOT)), 'application/wasm'),
-            ('/projects/nn-h/', 'text/html'),
-            ('/projects/nn-h/pkg/nn_h_bg.wasm', 'application/wasm'),
         ]:
             with self.subTest(path=path):
                 status, headers, _ = self.request('HEAD', path)
@@ -99,10 +97,17 @@ class StaticServerTests(unittest.TestCase):
                 self.assertTrue(headers['Content-Type'].startswith(content_type))
         self.assertEqual(self.request('GET', '/requirements.txt')[0], 404)
 
+    def test_nn_h_is_excluded_from_production(self):
+        self.assertNotIn(b'/projects/nn-h/', self.request('GET', '/')[2])
+        for path in ['/projects/nn-h/', '/projects/nn-h/pkg/nn_h_bg.wasm',
+                     '/projects/nn-h/mnist.bin', '/previews/nn-h-training/']:
+            with self.subTest(path=path):
+                self.assertEqual(self.request('HEAD', path)[0], 404)
+
     def test_playgrounds_load_the_same_pad_stylesheet_as_the_projects_page(self):
         css = asset_url('pads.css')
         pages = ['/'] + ['/' + p.playground.source.removesuffix('index.html')
-                         for p in PROJECTS if p.playground]
+                         for p in PROJECTS if p.listed and p.playground]
         for page in pages:
             with self.subTest(page=page):
                 status, _, html = self.request('GET', page)

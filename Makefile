@@ -22,8 +22,6 @@ html:
 	cp projects/*.png build/projects/
 	cp projects/*.jpg build/projects/
 	cp projects/*.webp build/projects/
-	cp -R projects/rejectsynth build/projects/
-	cp -R projects/nn-h build/projects/
 	cp -R projects/exac build/projects/
 	cp -R projects/goylang build/projects/
 	cp -R projects/matcharoni build/projects/
@@ -33,8 +31,9 @@ html:
 	cp resume.md build/sumeet.txt
 	$(PYTHON) build_html.py
 
+serve: export SITE_DEV=1
 serve: html pdf
-	SITE_DEV=1 $(PYTHON) -m gunicorn site_server:application --bind 127.0.0.1:8000 --workers 1 --threads 4
+	$(PYTHON) -m gunicorn site_server:application --bind 127.0.0.1:8000 --workers 1 --threads 4
 
 # The synth source lives in its own repository; Dokku serves this static export.
 rejectsynth:

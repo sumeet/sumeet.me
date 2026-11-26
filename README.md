@@ -144,19 +144,19 @@ of view. The editor grows without a height cap, including when lines wrap, and
 wheel input scrolls the containing page rather than an inner editor region.
 The 2023 date comes from the original September–November commit history.
 
-nn.h.rs uses the same iframe layout with a compact, light-themed egui drawing
-pad. Source lives in `../nn-h`, including the original CPU neural network,
-training utility, saved weights, and browser UI. The imported `projects/nn-h/`
-directory is generated, not an editable second implementation. Rebuild with:
+nn.h.rs is a local preview. Its CPU neural network, training utility, saved
+weights and browser UI live in `../nn-h`. To regenerate the local drawing pad
+and open the training replay at `http://localhost:8000/previews/nn-h-training/`, run:
 
 ```sh
 make nn-h
-make html
+make serve
 ```
 
 Set `NN_H_DIR=/path/to/nn-h` for another checkout. Training is a separate step
 documented in that repository; visitors load saved weights and recognize digits
-locally through WebAssembly. The site build uses the exported assets and links the shared pad stylesheet.
+locally through WebAssembly. The previous export is also available in site commit
+`486b107` under `projects/nn-h/`. Production builds omit the drawing pad and replay.
 The egui interface uses WebGL. If that renderer cannot start, the loader uses a
 Canvas2D/DOM view with the same controls. Both paths call the same Rust stroke
 rasterization, MNIST centering, trained model, and CPU inference; the fallback
