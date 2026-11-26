@@ -68,8 +68,11 @@
 }
 
 .projects .project-presentation {
-    position: relative;
     max-width: 890px;
+}
+
+.projects .project-presentation {
+    position: relative;
 }
 
 .projects .project-presentation[data-embed] img,
@@ -92,11 +95,12 @@
     width: 100%;
     max-width: 890px;
     border: 0;
-    border-radius: 5px;
+    border-radius: var(--pad-radius);
 }
 
 .projects .project-examples {
     width: 100%;
+    max-width: 890px;
 }
 
 .projects .project-example-tabs {
@@ -109,7 +113,7 @@
     gap: .3em;
     padding: 0;
     background: none;
-    margin-bottom: 1.25em;
+    margin-bottom: 1em;
 }
 
 .projects .project-example-tabs button {
@@ -129,10 +133,14 @@
     font-weight: bold;
 }
 
-.projects .project-example-tabs button:focus-visible,
-.projects .example-code-scroll:focus-visible {
+.projects .project-example-tabs button:focus-visible {
     outline: 2px solid #8199b8;
     outline-offset: 4px;
+}
+
+.projects .example-code-scroll:focus-visible {
+    outline: 2px solid #8199b8;
+    outline-offset: -2px;
 }
 
 .projects .project-example-panel[hidden] {
@@ -141,23 +149,60 @@
 
 .projects .project-example-content {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2em;
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr);
+    gap: 20px;
     align-items: start;
 }
 
-.projects .project-example-content figure {
+.projects .project-example-content figure, .projects .pad-columns figure {
     margin: 0;
     min-width: 0;
 }
 
+.projects .pad-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.projects .project-code-comparison {
+    max-width: 890px;
+}
+
+.projects .project-code-comparison .comparison-label {
+    padding: var(--pad-padding-y) var(--pad-padding-x) 0;
+}
+
+.projects .project-code-comparison .example-code-scroll {
+    max-height: 32em;
+}
+
+.projects .compiler-transcript {
+    margin: 1.75em 0 0;
+}
+
+.projects .compiler-transcript figcaption {
+    margin-bottom: .75em;
+}
+
+.projects .compiler-transcript pre {
+    margin: 0;
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.projects .compiler-transcript code {
+    font: var(--pad-font);
+    color: #666;
+}
+
 .projects .example-code-scroll {
-    max-height: 26em;
+    box-sizing: border-box;
+    max-height: 258px;
     overflow-x: auto;
     overflow-y: auto;
     scrollbar-gutter: stable;
     scrollbar-width: thin;
-    padding: 0 .5em .5em 0;
+    padding: var(--pad-padding-y) var(--pad-padding-x);
 }
 
 /* Match the native thin thumb, but prevent Chromium's overlay from fading. */
@@ -188,19 +233,19 @@
     }
 }
 
-.projects .project-example-content pre,
-.projects .project-example-content code {
-    font: 13px/1.65 "DejaVu Sans Mono", monospace;
+.projects .pad-columns pre, .projects .pad-columns code,
+.projects .taste-example pre, .projects .taste-source textarea {
+    font: var(--pad-font);
     white-space: pre;
 }
 
-.projects .project-example-content pre {
+.projects .pad-columns pre {
     margin: 0;
 }
 
 .projects .example-exa-name {
     display: block;
-    color: #777;
+    color: var(--pad-comment);
     font-size: 12px;
     margin-bottom: .5em;
 }
@@ -209,21 +254,93 @@
     margin-top: 1.25em;
 }
 
-.projects .syntax-keyword { color: #80526b; }
-.projects .syntax-number { color: #31777a; }
-.projects .syntax-hardware { color: #a16428; }
-.projects .syntax-channel { color: #526e98; }
-.projects .syntax-comment { color: #777; }
-.projects .syntax-string { color: #657743; }
+.projects .syntax-keyword { color: var(--pad-keyword); }
+.projects .syntax-number { color: var(--pad-number); }
+.projects .syntax-hardware { color: var(--pad-hardware); }
+.projects .syntax-channel { color: var(--pad-channel); }
+.projects .syntax-comment { color: var(--pad-comment); }
+.projects .syntax-string { color: var(--pad-string); }
 
 .projects .project-examples .example-replay {
     aspect-ratio: 816 / 603;
 }
 
+.projects .project-tastes {
+    display: grid;
+    grid-template-columns: minmax(0, 49fr) minmax(0, 51fr);
+    align-items: start;
+    gap: 20px;
+    max-width: 890px;
+}
+
+.projects .taste-example {
+    margin: 0;
+}
+
+.projects .taste-example pre, .projects .taste-source textarea {
+    margin: 0;
+    padding: var(--pad-padding-y) var(--pad-padding-x) calc(var(--pad-padding-y) * .7);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.projects .taste-example code, .projects .taste-example samp {
+    font: inherit;
+    white-space: inherit;
+}
+
+.projects .taste-source {
+    position: relative;
+}
+
+.projects .taste-source a {
+    position: relative;
+    z-index: 1;
+    color: var(--pad-comment);
+}
+
+.projects .taste-source textarea {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 0;
+    background: transparent;
+    color: transparent;
+    caret-color: #263444;
+    resize: none;
+    overflow: hidden;
+}
+
+.projects .taste-source textarea:focus {
+    z-index: 2;
+    outline: none;
+}
+
+@media (forced-colors: active) {
+    .projects .taste-source textarea {
+        color: CanvasText;
+        background: Canvas;
+        caret-color: CanvasText;
+    }
+}
+
+.projects .taste-example .syntax-pattern { color: var(--pad-pattern); }
+.projects .taste-example .syntax-operator { color: var(--pad-operator); }
+
+.projects .taste-example .taste-value {
+    padding-block: calc(var(--pad-padding-y) * .7);
+}
+
+.projects .taste-value.has-error { color: var(--pad-error); }
+.projects .taste-value[aria-busy="true"] samp { opacity: .6; }
+
 .projects .example-legend {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .55em 2em;
+    max-width: 575px;
+    gap: .55em 20px;
     color: #777;
     font-size: 13px;
     line-height: 1.6;
@@ -231,15 +348,12 @@
 }
 
 .projects .example-legend code {
-    font-family: "DejaVu Sans Mono", monospace;
+    font-family: var(--pad-mono);
     margin-right: .6em;
 }
 
 .projects #nn-h .project-playground {
     max-width: 540px;
-    box-sizing: border-box;
-    border: 1px solid #c9d4e5;
-    background: #f8fbff;
 }
 
 .projects .project-presentation-play {
@@ -281,7 +395,7 @@
 
 @media (max-width: 999px) {
     .projects .project-example-content {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .projects .project-example-content .project-example-replay {
@@ -301,7 +415,8 @@
         max-height: 430px;
     }
 
-    .projects .project-example-content,
+    .projects .pad-columns,
+    .projects .project-tastes,
     .projects .example-legend {
         grid-template-columns: minmax(0, 1fr);
     }

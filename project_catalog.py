@@ -34,6 +34,21 @@ class CodeExample:
 
 
 @dataclass(frozen=True)
+class CodeComparison:
+    source: str
+    generated: str
+    transcript: str
+
+
+@dataclass(frozen=True)
+class CodeTaste:
+    slug: str
+    title: str
+    source: str
+    output: str
+
+
+@dataclass(frozen=True)
 class Project:
     slug: str
     title: str
@@ -47,6 +62,8 @@ class Project:
     sort_date: str | None = None
     examples: tuple[CodeExample, ...] = ()
     default_example: str | None = None
+    code_comparison: CodeComparison | None = None
+    tastes: tuple[CodeTaste, ...] = ()
 
     @property
     def latest_year(self):
@@ -61,14 +78,56 @@ class Project:
 # Descriptions are handwritten Markdown files.
 PROJECTS = (
     Project(
+        slug='stdless',
+        title='stdless',
+        dates='2022',
+        sort_date='2022-06-29',
+        technologies=('Rust', 'Linux syscalls'),
+        url='https://github.com/sumeet/stdless',
+        description_file='projects/stdless.md',
+        demos=(),
+    ),
+    Project(
+        slug='goylang',
+        title='goylang',
+        dates='2022–2023',
+        sort_date='2023-06-04',
+        technologies=('Go',),
+        url='https://github.com/sumeet/goylang',
+        description_file='projects/goylang.md',
+        demos=(),
+        code_comparison=CodeComparison(
+            source='projects/goylang/compiler.goy',
+            generated='projects/goylang/compiler.go',
+            transcript='projects/goylang/self-compilation.txt',
+        ),
+    ),
+    Project(
         slug='matcharoni',
-        title='Matcharoni',
+        title='matcharoni',
         dates='2021',
         sort_date='2021-12-10',
         technologies=('Rust',),
         url='https://github.com/sumeet/matcharoni',
         description_file='projects/matcharoni.md',
         demos=(),
+        tastes=(
+            CodeTaste(
+                'duration', 'Minutes',
+                'projects/matcharoni/duration.roni',
+                'projects/matcharoni/duration.output.txt',
+            ),
+            CodeTaste(
+                'binary', 'Binary',
+                'projects/matcharoni/binary.roni',
+                'projects/matcharoni/binary.output.txt',
+            ),
+            CodeTaste(
+                'mag', 'Snailfish magnitude',
+                'projects/matcharoni/mag.roni',
+                'projects/matcharoni/mag.output.txt',
+            ),
+        ),
         presentation=Presentation(
             source='https://www.youtube.com/watch?v=2GnqHe2wx_M',
             poster='projects/matcharoni-poster.jpg',
@@ -121,6 +180,7 @@ PROJECTS = (
         slug='solsolver',
         title='solsolver',
         dates='2022',
+        sort_date='2022-11-05',
         technologies=('Rust', 'Python', 'OpenCV'),
         url='https://github.com/sumeet/solsolver',
         description_file='projects/solsolver.md',
@@ -159,7 +219,7 @@ PROJECTS = (
         demos=(
             Demo('projects/codemaestro-stack-interpreter.webp', 'CodeMaestro stack interpreter showing instruction choices and the result'),
             Demo('projects/codemaestro-file-tree-completed.webp', 'Completed recursive file paths function in CodeMaestro'),
-            Demo('projects/codemaestro-particle-rename.webp', 'Renaming a Particle field in CodeMaestro alongside the code that uses it'),
+            Demo('projects/codemaestro-particle-conditional.webp', 'Renaming a Particle field to height updates its uses in the step particle function'),
         ),
     ),
     Project(

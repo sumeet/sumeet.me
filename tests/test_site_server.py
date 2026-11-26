@@ -9,6 +9,9 @@ import tempfile
 import time
 import unittest
 
+from page_template import asset_url
+from project_catalog import PROJECTS
+
 
 ROOT = Path(__file__).resolve().parents[1]
 VIDEO = ROOT / 'build/projects/solsolver-full.mp4'
@@ -95,6 +98,19 @@ class StaticServerTests(unittest.TestCase):
                 self.assertEqual(status, 200)
                 self.assertTrue(headers['Content-Type'].startswith(content_type))
         self.assertEqual(self.request('GET', '/requirements.txt')[0], 404)
+
+    def test_playgrounds_load_the_same_pad_stylesheet_as_the_projects_page(self):
+        css = asset_url('pads.css')
+        pages = ['/'] + ['/' + p.playground.source.removesuffix('index.html')
+                         for p in PROJECTS if p.playground]
+        for page in pages:
+            with self.subTest(page=page):
+                status, _, html = self.request('GET', page)
+                self.assertEqual(status, 200)
+                self.assertIn(f'<link rel="stylesheet" href="{css}">'.encode(), html)
+        status, _, served = self.request('GET', css)
+        self.assertEqual(status, 200)
+        self.assertEqual(served, (ROOT / 'pads.css').read_bytes())
 
 
 if __name__ == '__main__':

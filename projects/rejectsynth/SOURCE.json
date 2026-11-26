@@ -1,7 +1,7 @@
 {
   "repository": "https://github.com/sumeet/rejectsynth",
   "revision": "12db530504d8517f2922b20a29c2f5e11f8071cd",
-  "uncommitted_changes": false,
-  "build_sha256": "baff0949515f51d08d4741fe9636843ff6be320a6a8c4052a233847c46a89dfd",
+  "uncommitted_changes": true,
+  "build_sha256": "81ad69d254679adf99fa3753b6f742bd08c4df991ab22fa239af655ad2b78260",
   "rebuild": "make rejectsynth REJECTSYNTH_DIR=../rejectsynth"
 }

@@ -1,0 +1,6 @@
+$ go run current_compiler/main.go goylang.goy > stage1.go
+$ go run stage1.go goylang.goy > stage2.go
+$ go run stage2.go goylang.goy > stage3.go
+$ gofmt -w stage1.go stage2.go stage3.go
+$ cmp stage2.go stage3.go && echo "Identical output"
+Identical output

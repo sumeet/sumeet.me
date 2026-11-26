@@ -1,0 +1,1 @@
+An exploration into Linux syscalls and `no_std` + `unsafe` Rust: a functioning webserver that has no dependencies besides the Rust language. All of the networking and IO are implemented directly as syscalls using inline x86_64 assembly.

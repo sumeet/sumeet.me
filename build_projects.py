@@ -7,7 +7,7 @@ from markdown import markdown
 
 from page_template import asset_url, render_page
 from project_catalog import PROJECTS, Demo, Presentation, Project
-from code_examples import render_code_examples
+from code_examples import render_code_comparison, render_code_examples, render_code_taste
 
 
 def render_demo(demo: Demo):
@@ -62,6 +62,17 @@ def render_project(project: Project):
             loading="lazy" allow="autoplay" height="{playground.height}"></iframe>'''
     if project.examples:
         media = render_code_examples(project)
+    if project.code_comparison:
+        media = render_code_comparison(project.code_comparison)
+    if project.tastes:
+        cards = [render_code_taste(example) for example in project.tastes]
+        if presentation:
+            cards.append(presentation)
+            presentation = ''
+        prelude = Path('projects/matcharoni/prelude.roni').read_text()
+        media = f'''<div class="project-tastes">{"".join(cards)}</div>
+            <template id="matcharoni-prelude">{escape(prelude)}</template>
+            <script type="module" src="{asset_url('projects/matcharoni/pad.js')}"></script>'''
     technology_names = [f'<span class="loud">{escape(technology)}</span>'
                         for technology in project.technologies]
     technologies = (', '.join(technology_names[:-1]) + ' and ' + technology_names[-1]
@@ -82,6 +93,7 @@ def render_html():
                          sorted(PROJECTS, key=lambda project: project.sort_key, reverse=True))
     extra_head = f"""
         <base target="_blank">
+        <link rel="stylesheet" href="{asset_url('pads.css')}">
         <link rel="stylesheet" href="{asset_url('projects.css')}">
         <script src="{asset_url('projects.js')}" defer></script>
 """

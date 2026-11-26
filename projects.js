@@ -43,7 +43,7 @@ window.addEventListener('message', (event) => {
     if (event.origin !== location.origin || event.data?.type !== 'rejectsynth:resize') return;
     const frame = playgrounds.find((candidate) => candidate.contentWindow === event.source);
     const height = event.data.height;
-    if (frame && Number.isFinite(height)) frame.height = Math.ceil(Math.max(340, Math.min(2000, height)));
+    if (frame && Number.isFinite(height)) frame.height = Math.ceil(Math.max(340, height));
 });
 
 const stopOffscreen = new IntersectionObserver((entries) => {
@@ -61,6 +61,7 @@ document.querySelectorAll('.project-examples').forEach((examples) => {
     function updateReplayImages() {
         for (const panel of panels) {
             const image = panel.querySelector('.example-replay[data-src]');
+            if (!image) continue;
             const animate = !panel.hidden && visible && !document.hidden;
             const source = animate ? image.dataset.src : image.dataset.poster;
             if (image.getAttribute('src') !== source) image.src = source;

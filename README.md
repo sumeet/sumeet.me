@@ -47,7 +47,7 @@ site and checks real HTTP range responses, media bytes, and existing routes.
 The projects preview is at http://localhost:8000/ and the résumé is at
 http://localhost:8000/resume/. Project descriptions live in `projects/solsolver.md`, `projects/zac.md`,
 `projects/codemaestro.md`, `projects/rejectsynth.md`, `projects/nn-h.md`, `projects/exac.md`,
-`projects/matcharoni.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
+`projects/matcharoni.md`, `projects/stdless.md`, and `projects/golden.md`. `project_catalog.py` supplies their titles,
 dates, technologies, links, and demo assets to the reusable `render_project()` function. New projects
 need a Markdown description and a catalog entry, without copied layout HTML.
 Projects are sorted newest first. An optional internal `sort_date` resolves
@@ -55,16 +55,34 @@ ties within a displayed year; otherwise the latest year in the date range is
 used. These reflect original project work, not later portfolio maintenance:
 nn.h.rs has commits from 15–20 May 2023, before rejectsynth's September–November
 2023 history. Public dates remain years.
-Project-specific layout is in `projects.css`. After editing, run `make html`
-and refresh.
+stdless is dated June 2022, before solsolver's November 2022 work.
+Project-specific layout is in `projects.css`. Edit `pads.css` for the shared
+code font, padding, frame, source and output surfaces, and syntax colors.
+`make html` loads the same stylesheet in the projects page and in the local
+copies of the embedded demos. Refresh the page to apply a theme change.
 Project headers use the old Reading page's compact Graublau titles, linked to
 their repositories, followed by a smaller "from <date> using <technologies>" line.
 The projects page sets a default new-tab target for all links, including its
 navigation and Markdown links; the résumé page keeps its existing behavior.
-CodeMaestro uses the original WebP assets: the stack interpreter and completed
-file-tree stills above the particle rename loop. The build copies them unchanged.
+CodeMaestro shows the stack interpreter and completed file-tree stills above
+the Particle field rename loop. The loop comes from
+`~/codemaestro-portfolio-2026-11-23/assets/particle-rename.webp` and is served
+as `projects/codemaestro-particle-conditional.webp`.
 
 Matcharoni is dated December 2021, placing it after EXAc and Zac in that year.
+On 24 November 2026, Sumeet supplied the expanded description now in
+`projects/matcharoni.md`. Three editable pads and the video share a two-column
+grid. Minutes parses durations, Binary converts a bit string to decimal, and
+`mag` recursively computes the magnitude of a snailfish number. The page initially shows
+recorded output. Editing a pad runs its source with the original Rust
+interpreter in a WebAssembly worker and displays each top-level expression's
+value. The examples share the `digit`, `num` and `sum` patterns in
+`projects/matcharoni/prelude.roni`.
+
+The pad entry point lives in `../matcharoni`. After changing the interpreter or
+examples, run `make matcharoni` with nightly Rust, the `wasm32-unknown-unknown`
+target and wasm-bindgen CLI 0.2.100 installed, then `make html`. Regular HTML
+builds use the exported runtime in `projects/matcharoni/pkg/`.
 Its media is Sumeet's own [introduction video](https://www.youtube.com/watch?v=2GnqHe2wx_M),
 titled "Matcharoni ('n cheese) - langjam 0002" on the `sumeeta` channel.
 The local poster is the video's YouTube `hqdefault.jpg` thumbnail.
@@ -120,9 +138,11 @@ make html
 Set `REJECTSYNTH_DIR=/path/to/rejectsynth` if the checkout is elsewhere. This
 explicit export step needs Node, Rust and wasm-bindgen; ordinary site builds and
 Dokku deployment still only need the existing Python/Make setup. The editor has
-an inline Play/Stop link, fixed 50% gain, and optional Vim bindings behind its
+an inline Play/Stop button, fixed 50% gain, and optional Vim bindings behind its
 top-right icon. It resizes to its content and stops playback when scrolled out
-of view. The 2023 date comes from the original September–November commit history.
+of view. The editor grows without a height cap, including when lines wrap, and
+wheel input scrolls the containing page rather than an inner editor region.
+The 2023 date comes from the original September–November commit history.
 
 nn.h.rs uses the same iframe layout with a compact, light-themed egui drawing
 pad. Source lives in `../nn-h`, including the original CPU neural network,
@@ -136,21 +156,24 @@ make html
 
 Set `NN_H_DIR=/path/to/nn-h` for another checkout. Training is a separate step
 documented in that repository; visitors load saved weights and recognize digits
-locally through WebAssembly. Site builds only copy the exported assets.
-The egui interface needs WebGL; if browser graphics are unavailable, the loader
-reports that explicitly instead of suggesting that refreshing alone will fix it.
+locally through WebAssembly. The site build uses the exported assets and links the shared pad stylesheet.
+The egui interface uses WebGL. If that renderer cannot start, the loader uses a
+Canvas2D/DOM view with the same controls. Both paths call the same Rust stroke
+rasterization, MNIST centering, trained model, and CPU inference; the fallback
+does not reimplement the neural network in JavaScript. Its view is maintained
+in `../nn-h/web/canvas-pad.js`.
 
 EXAc has three tabbed examples: The Wormhole (selected initially), Valhalla,
-and Unknown Network 2. Each tab places its original source, compiled assembly,
-and native EXAPUNKS GIF side by side on desktop, stacking on narrower screens.
+and Unknown Network 2. Each tab places its original source and compiled assembly
+in a shared pad, with the native EXAPUNKS GIF beside it on desktop.
+The replay moves below the pad on narrower screens, and the code panes stack on phones.
 The columns have no headings; the example choices sit on one line above all three columns.
 The notation legend follows the complete example.
 `code_examples.py` renders the shared layout from the catalog; `projects.js`
 loads only the selected GIF when the section comes into view, replacing it
 with its still poster offscreen. Arrow keys switch examples. The selector uses
 regular body type and grey choices; the selected example is bold with a pale
-blue rounded background, borrowing the main navigation's colors. The three
-desktop columns have equal widths and gaps across the content width, and code
+blue rounded background, borrowing the main navigation's colors. The code
 panes show thin scrollbars only when their code overflows. Chromium/WebKit gets a minimal 3px thumb override to
 keep the scrollbar visible when code overflows; other browsers use native
 `scrollbar-width: thin`. These demo GIFs
@@ -176,15 +199,14 @@ compiler nor the game. No game saves are shipped with the site.
 
 Zac's Game of Life, help, and Fibonacci demos are visible together and loop
 independently, without visible controls or a selector.
-The MP4s are converted from the GIFs in the Zac repository's `.README_assets/`
-directory; hello-world is deliberately omitted. To regenerate an MP4 with ffmpeg:
-
-```sh
-ffmpeg -i input.gif -an -vf fps=30 -c:v libx264 -crf 28 -preset slow -pix_fmt yuv420p -movflags +faststart output.mp4
-```
-
-The three loops total about 2.18 MB. These encodes keep the original dimensions
-and 30 fps; regenerate from the source GIFs rather than recompressing the MP4s.
+The muted H.264 loops are 2× restorations of the original `.README_assets/`
+GIFs in Zac at `1515668`. The Langjam submission has identical source files.
+The restoration reduces palette dithering, uses repeated letter shapes from the
+recordings to recover text detail, and lifts the contrast of dim comments.
+Each frame retains its original GIF delay. Game of Life is 748×1204 (495 frames,
+16.51s), help is 1300×668 (335 frames, 11.16s), and Fibonacci is 1000×568
+(287 frames, 9.56s). Together they are 1.04 MB. The rebuild scripts and timing
+check are in `~/zac-portfolio-2026-11-25/recipe/`.
 
 golden also uses a muted, looping MP4. Its original GIF is retained for regeneration:
 
@@ -193,8 +215,7 @@ ffmpeg -i projects/golden-demo.gif -an -c:v libx264 -crf 28 -preset slow -pix_fm
 ```
 
 The golden MP4 is about 1.14 MB, versus 12.81 MB for the GIF. The page references
-only the MP4. These are lossy encodes, checked against the originals for text
-readability; no resizing, denoising filters, or playback-speed changes are applied.
+only the MP4. The golden encode retains its original dimensions and speed.
 The converted files are included in the repository, so normal builds do not need ffmpeg.
 
 Zac's presentation video sits below the help and Fibonacci demos in the right
@@ -256,6 +277,30 @@ git push dokku2 master
 Working shortlist retained from `~/Downloads/portfolio_master_inventory.md`
 (11 November 2026) and the portfolio discussion. Pick one project at a time;
 Sumeet writes the public description. Prioritize a clear demo for the effort.
+
+Next projects, selected 22 November 2026: **goylang → stdless → Advent of Code**.
+goylang is awaiting research; stdless has a local text entry, with Advent of Code next.
+
+The rejected local goylang proposal uses `compileDeclaration` from `~/goylang` at
+`fd68d83`, beside its actual generated Go, followed by a recorded
+self-compilation transcript. Source provenance is in
+`projects/goylang/SOURCE.json`. The transcript's second and third compiler
+generations were compared after `gofmt` and are identical. Its description
+is intentionally unwritten. Sumeet rejected this presentation on 22 November
+2026; do not treat it as an approved demo for deployment. The research handoff
+is in `~/Downloads/goylang-research-handoff-2026-11-22/`.
+
+**stdless**, started 22 November 2026: cloned to `~/stdless` at `aaad143`
+(original work 26–29 June 2022). The source runs unchanged with
+`RUSTC_BOOTSTRAP=1 cargo +1.77.2 build --locked --offline`; the current nightly
+rejects its obsolete `maybe_uninit_uninit_array` feature declaration.
+An isolated network-namespace check verified the bundled index and page 2
+responses byte-for-byte, plus the 404 response. Evidence and the check script
+are in `~/stdless-portfolio-2026-11-22/`. `readelf` reports no `DT_NEEDED`
+libraries, though the executable still has an ELF interpreter; do not call it
+fully static. Sumeet chose a compact text entry with technologies Rust and
+Linux syscalls, using his exact wording in `projects/stdless.md`. It is in the
+local preview only. No recording or running demo is needed for this entry.
 
 **solsolver**, selected 20 November 2026. The local checkout is
 `~/solsolver`; The Zachtronics Solitaire Collection is installed in Steam.
@@ -385,7 +430,7 @@ Included in the projects catalog: rejectsynth, nn.h.rs, solsolver, Matcharoni, E
 | Candidate | What it could show |
 |---|---|
 | ClipShare | Copy text or images on one computer, paste on another |
-| Goylang | Self-hosting compiler targeting Go |
+| goylang | Self-hosting compiler targeting Go |
 | EXAc | Higher-level source compiled to EXAPUNKS assembly and run in the game |
 | Linux desktop setup | Mouse-driven tiling workflow; recover the setup and media |
 | Ceremoney | Haskell CHIP-8 emulator running a game |

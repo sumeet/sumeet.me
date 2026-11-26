@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/sumeet/goylang",
+  "revision": "fd68d83b777c7dc767ee678012d6848693750b58",
+  "source_file": "goylang.goy",
+  "source_line": 996,
+  "function": "compileDeclaration",
+  "generated_from": "third compiler generation, formatted with gofmt",
+  "display_changes": "tabs expanded to four spaces; no code removed",
+  "verification": "stage2.go and stage3.go are byte-identical after gofmt"
+}

@@ -252,8 +252,83 @@ function __wbg_adapter_35(arg0, arg1, arg2) {
     wasm.__wbindgen_export_8(arg0, arg1, addHeapObject(arg2));
 }
 
-function __wbg_adapter_468(arg0, arg1, arg2, arg3) {
+function __wbg_adapter_474(arg0, arg1, arg2, arg3) {
     wasm.__wbindgen_export_9(arg0, arg1, addHeapObject(arg2), addHeapObject(arg3));
+}
+
+const CpuDrawingPadFinalization = (typeof FinalizationRegistry === 'undefined')
+    ? { register: () => {}, unregister: () => {} }
+    : new FinalizationRegistry(ptr => wasm.__wbg_cpudrawingpad_free(ptr >>> 0, 1));
+/**
+ * Canvas2D is only a view: rasterization, centering and inference stay in Rust
+ * and use exactly the same path as the egui drawing pad.
+ */
+export class CpuDrawingPad {
+
+    __destroy_into_raw() {
+        const ptr = this.__wbg_ptr;
+        this.__wbg_ptr = 0;
+        CpuDrawingPadFinalization.unregister(this);
+        return ptr;
+    }
+
+    free() {
+        const ptr = this.__destroy_into_raw();
+        wasm.__wbg_cpudrawingpad_free(ptr, 0);
+    }
+    begin_stroke() {
+        wasm.cpudrawingpad_begin_stroke(this.__wbg_ptr);
+    }
+    /**
+     * @param {Uint8Array} weights
+     */
+    constructor(weights) {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            const ptr0 = passArray8ToWasm0(weights, wasm.__wbindgen_export_1);
+            const len0 = WASM_VECTOR_LEN;
+            wasm.cpudrawingpad_new(retptr, ptr0, len0);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            this.__wbg_ptr = r0 >>> 0;
+            CpuDrawingPadFinalization.register(this, this.__wbg_ptr, this);
+            return this;
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
+    clear() {
+        wasm.cpudrawingpad_clear(this.__wbg_ptr);
+    }
+    /**
+     * @param {number} x
+     * @param {number} y
+     */
+    point(x, y) {
+        wasm.cpudrawingpad_point(this.__wbg_ptr, x, y);
+    }
+    /**
+     * @returns {number}
+     */
+    predict() {
+        try {
+            const retptr = wasm.__wbindgen_add_to_stack_pointer(-16);
+            wasm.cpudrawingpad_predict(retptr, this.__wbg_ptr);
+            var r0 = getDataViewMemory0().getInt32(retptr + 4 * 0, true);
+            var r1 = getDataViewMemory0().getInt32(retptr + 4 * 1, true);
+            var r2 = getDataViewMemory0().getInt32(retptr + 4 * 2, true);
+            if (r2) {
+                throw takeObject(r1);
+            }
+            return r0 >>> 0;
+        } finally {
+            wasm.__wbindgen_add_to_stack_pointer(16);
+        }
+    }
 }
 
 const WebHandleFinalization = (typeof FinalizationRegistry === 'undefined')
@@ -291,6 +366,9 @@ export class WebHandle {
         this.__wbg_ptr = ret >>> 0;
         WebHandleFinalization.register(this, this.__wbg_ptr, this);
         return this;
+    }
+    destroy() {
+        wasm.webhandle_destroy(this.__wbg_ptr);
     }
 }
 
@@ -954,7 +1032,7 @@ function __wbg_get_imports() {
                 const a = state0.a;
                 state0.a = 0;
                 try {
-                    return __wbg_adapter_468(a, state0.b, arg0, arg1);
+                    return __wbg_adapter_474(a, state0.b, arg0, arg1);
                 } finally {
                     state0.a = a;
                 }
@@ -1305,19 +1383,19 @@ function __wbg_get_imports() {
         const ret = false;
         return ret;
     };
-    imports.wbg.__wbindgen_closure_wrapper429 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper451 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 89, __wbg_adapter_26);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper487 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper509 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 89, __wbg_adapter_29);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper489 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper511 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 89, __wbg_adapter_32);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper764 = function(arg0, arg1, arg2) {
+    imports.wbg.__wbindgen_closure_wrapper786 = function(arg0, arg1, arg2) {
         const ret = makeMutClosure(arg0, arg1, 185, __wbg_adapter_35);
         return addHeapObject(ret);
     };

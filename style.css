@@ -209,6 +209,13 @@ body #content, body #sidebar { min-width: 0; }
 body #sidebar { text-align: right; }
 body #sidebar div.section { margin-bottom: 0.5em; }
 
+@media (max-width: 410px) {
+    body #header { column-gap: 8px; }
+    body .site-name { font-size: clamp(23px, 7vw, 28px); }
+    body #nav { font-size: clamp(16px, 4.8vw, 20.4px); }
+    body #nav .site-choices { gap: .75em; padding-inline: .5em; }
+}
+
 @media (max-width: 800px) {
     body .page-with-sidebar { grid-template-columns: minmax(0, 1fr); }
     body #sidebar { grid-row: 1; text-align: left; }

@@ -1,0 +1,7 @@
+pat unit {
+  n@num ~ 'd' => n * 1440,
+  n@num ~ 'h' => n * 60,
+  n@num ~ 'm' => n
+}
+pat minutes ns@[unit]{1+} => sum(ns)
+minutes("2h15m")

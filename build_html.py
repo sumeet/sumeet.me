@@ -4,6 +4,8 @@ from pathlib import Path
 
 import build_projects
 import build_resume
+from page_template import asset_url
+from project_catalog import PROJECTS
 
 
 def build_site():
@@ -19,7 +21,15 @@ def build_site():
         output / 'index.html': build_projects.render_html(),
         resume_directory / 'index.html': build_resume.render_html(),
     }
+    # Theme the embedded copies while keeping each project's export standalone.
+    pad_link = f'<link rel="stylesheet" href="{asset_url("pads.css")}">'
+    for project in PROJECTS:
+        if project.playground:
+            entry = Path(project.playground.source)
+            pages[output / entry] = entry.read_text(encoding='utf-8').replace(
+                '</head>', f'    {pad_link}\n</head>', 1)
     for destination, html in pages.items():
+        destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_text(html, encoding='utf-8')
 
     # Keep existing local preview bookmarks pointing at the projects homepage.

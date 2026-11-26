@@ -5,31 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>nn.h.rs — handwritten digits</title>
   <style>
-    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #f8fbff; }
+    html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: var(--pad-source, #f8fbff); }
     body { font: 16px "Lucida Grande", Verdana, Arial, sans-serif; color: #555; }
-    canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+    #canvas { display: block; width: 100%; height: 100%; touch-action: none; }
     #loading { position: absolute; top: 16px; left: 16px; margin: 0; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+    .canvas-pad { display: flex; align-items: start; gap: 24px; padding: 16px; }
+    .drawing { width: min(200px, calc(100vw - 132px)); min-width: 120px; flex: none; }
+    .drawing label { display: block; margin-bottom: 10px; }
+    #drawing { display: block; width: 100%; aspect-ratio: 1; box-sizing: border-box; touch-action: none; background: white; border: 1px solid #c9d4e5; border-radius: 3px; }
+    .actions { display: flex; gap: 10px; margin-top: 10px; }
+    button { font: 15px Arial, sans-serif; color: #464b52; padding: 3px 6px; background: #e5e5e5; border: 1px solid transparent; border-radius: 3px; cursor: pointer; white-space: nowrap; }
+    button:hover { border-color: #aeb5bd; }
+    button:disabled { opacity: .45; cursor: default; }
+    button:focus-visible { outline: 2px solid #8199b8; outline-offset: 2px; }
+    .prediction output { display: block; margin-top: 48px; font: 64px Arial, sans-serif; color: #333; }
+    @media (max-width: 360px) { .canvas-pad { gap: 12px; } .actions { gap: 5px; } button { font-size: 13px; padding-inline: 4px; } }
   </style>
 </head>
-<body>
+<body class="project-pad">
   <p id="loading" role="status">Loading drawing pad…</p>
   <canvas id="canvas" aria-label="Draw a handwritten digit and use Feed forward to recognize it" aria-describedby="result"></canvas>
   <p id="result" class="sr-only" role="status" aria-live="polite">Draw a digit, then press Feed forward.</p>
   <script type="module">
-    import init, { WebHandle } from './pkg/nn_h.js';
+    import init, { WebHandle, CpuDrawingPad } from './pkg/nn_h.js';
     const loading = document.querySelector('#loading');
     try {
       const [, response] = await Promise.all([init(), fetch('./mnist.bin')]);
       if (!response.ok) throw new Error(`Model request failed (${response.status})`);
+      const weights = new Uint8Array(await response.arrayBuffer());
       const app = new WebHandle();
-      await app.start('canvas', new Uint8Array(await response.arrayBuffer()));
-      window.nnDemo = app;
+      try {
+        await app.start('canvas', weights);
+        window.nnDemo = app;
+      } catch (error) {
+        app.destroy();
+        const { startCanvasPad } = await import('./canvas-pad.js');
+        window.nnDemo = startCanvasPad(CpuDrawingPad, weights);
+      }
       loading.remove();
     } catch (error) {
-      loading.textContent = /webgl/i.test(String(error))
-        ? 'The drawing pad needs WebGL, which is unavailable in this browser. Try restarting your browser or enabling graphics acceleration.'
-        : 'Could not load the drawing pad. Try refreshing.';
+      loading.textContent = 'Could not load the drawing pad. Try refreshing.';
       loading.style.color = '#9b2937';
       console.error(error);
     }

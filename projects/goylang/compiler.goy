@@ -1,0 +1,18 @@
+func compileDeclaration(d Declaration) string {
+    match (d) {
+        Declaration.Enum { e }: {
+            return compileEnum(e)
+        },
+        Declaration.Import { imp }: {
+            return compileImport(imp)
+        },
+        Declaration.Struct { s }: {
+            return compileStruct(s)
+        },
+        Declaration.Function { f }: {
+            return compileFunction(f)
+        },
+    }
+    // TODO: shouldn't have to do this because match is exhaustive
+    panic("unreachable")
+}

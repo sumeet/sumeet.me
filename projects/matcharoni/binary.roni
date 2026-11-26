@@ -1,0 +1,5 @@
+pat bit { '0' => 0, '1' => 1 }
+pat bits bs@[bit]{1+} => bs
+pat dec bs@bits => sum [*bs << (#bs - %bs - 1) <- bs]
+bits("10110")
+dec("10110")

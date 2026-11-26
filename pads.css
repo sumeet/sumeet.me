@@ -1,0 +1,42 @@
+/* Shared by the portfolio and its embedded demos. Monaco reads the hex colors
+   and the editor's computed font metrics when it starts. */
+:root {
+    --pad-source: #f9fbfe;
+    --pad-output: #edf2f7;
+    --pad-output-ink: #405467;
+    --pad-border: 1px solid #d6dfe9;
+    --pad-radius: 5px;
+    --pad-padding-x: 13px;
+    --pad-padding-y: 10px;
+    --pad-mono: "DejaVu Sans Mono", monospace;
+    --pad-font: 13px/1.65 var(--pad-mono);
+    --pad-error: #9e3340;
+    --pad-selection: #cbdcf5;
+
+    --pad-comment: #777;
+    --pad-keyword: #80526b;
+    --pad-number: #31777a;
+    --pad-string: #657743;
+    --pad-pattern: #345e8b;
+    --pad-operator: #775567;
+    --pad-hardware: #a16428;
+    --pad-channel: #526e98;
+    --pad-music-directive: #67569a;
+    --pad-music-note: #176b75;
+    --pad-music-operator: #87580b;
+    --pad-music-chord: #9c4c55;
+}
+
+.project-pad {
+    box-sizing: border-box;
+    min-width: 0;
+    overflow: hidden;
+    border: var(--pad-border);
+    border-radius: var(--pad-radius);
+    background: var(--pad-source);
+}
+
+.pad-output {
+    color: var(--pad-output-ink);
+    background: var(--pad-output);
+}

@@ -1,0 +1,8 @@
+// https://adventofcode.com/2021/day/18
+pat mag {
+  '[' ~ a@mag ~ ',' ~ b@mag ~ ']' =>
+    3 * a + (2 * b),
+  n@num => n
+}
+mag("[1,2]")
+mag("[[1,2],3]")

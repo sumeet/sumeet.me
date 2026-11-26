@@ -2,6 +2,7 @@ PYTHON_VERSION := $(shell cat .python-version)
 PYTHON ?= $(if $(wildcard .venv/bin/python),$(CURDIR)/.venv/bin/python,python$(PYTHON_VERSION))
 REJECTSYNTH_DIR ?= ../rejectsynth
 NN_H_DIR ?= ../nn-h
+MATCHARONI_DIR ?= ../matcharoni
 
 default: html pdf
 
@@ -11,9 +12,8 @@ setup:
 
 html:
 	mkdir -p build
-	$(PYTHON) build_html.py
 	cp style.css build/
-	cp projects.css projects.js build/
+	cp pads.css projects.css projects.js build/
 	mkdir -p build/fonts
 	cp fonts/* build/fonts/
 	mkdir -p build/projects
@@ -25,10 +25,13 @@ html:
 	cp -R projects/rejectsynth build/projects/
 	cp -R projects/nn-h build/projects/
 	cp -R projects/exac build/projects/
+	cp -R projects/goylang build/projects/
+	cp -R projects/matcharoni build/projects/
 	cp *.otf build/
 	cp darkreader.js build/
 	cp favicon.ico build/
 	cp resume.md build/sumeet.txt
+	$(PYTHON) build_html.py
 
 serve: html pdf
 	SITE_DEV=1 $(PYTHON) -m gunicorn site_server:application --bind 127.0.0.1:8000 --workers 1 --threads 4
@@ -41,6 +44,14 @@ rejectsynth:
 nn-h:
 	cd "$(NN_H_DIR)" && bash web/build.sh
 	$(PYTHON) sync_nn_h.py "$(NN_H_DIR)"
+
+matcharoni:
+	cargo rustc --manifest-path "$(MATCHARONI_DIR)/web/Cargo.toml" --locked --release --lib \
+		--target wasm32-unknown-unknown --target-dir "$(MATCHARONI_DIR)/target" -- -C link-arg=--max-memory=67108864
+	wasm-bindgen --target web --no-typescript --out-name matcharoni --out-dir projects/matcharoni/pkg \
+		"$(MATCHARONI_DIR)/target/wasm32-unknown-unknown/release/matcharoni_web.wasm"
+	cargo build --manifest-path "$(MATCHARONI_DIR)/Cargo.toml" --locked --target-dir "$(MATCHARONI_DIR)/target"
+	$(PYTHON) record_matcharoni.py "$(MATCHARONI_DIR)/target/debug/matcharoni"
 
 open_html:
 	open build/index.html
@@ -64,4 +75,4 @@ clean:
 	rm -rf build
 	rm -rf __pycache__
 
-.PHONY: default setup html serve rejectsynth nn-h open_html test_html test pdf open_pdf test_pdf clean
+.PHONY: default setup html serve rejectsynth nn-h matcharoni open_html test_html test pdf open_pdf test_pdf clean
