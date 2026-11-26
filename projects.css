@@ -186,25 +186,6 @@
     max-height: 32em;
 }
 
-.projects .compiler-transcript {
-    margin: 1.75em 0 0;
-}
-
-.projects .compiler-transcript figcaption {
-    margin-bottom: .75em;
-}
-
-.projects .compiler-transcript pre {
-    margin: 0;
-    overflow-x: auto;
-    scrollbar-width: thin;
-}
-
-.projects .compiler-transcript code {
-    font: var(--pad-font);
-    color: #666;
-}
-
 .projects .example-code-scroll {
     box-sizing: border-box;
     max-height: 258px;

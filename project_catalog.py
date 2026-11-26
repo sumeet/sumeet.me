@@ -37,7 +37,6 @@ class CodeExample:
 class CodeComparison:
     source: str
     generated: str
-    transcript: str
 
 
 @dataclass(frozen=True)
@@ -93,17 +92,15 @@ PROJECTS = (
     Project(
         slug='goylang',
         title='goylang',
-        dates='2022–2023',
-        sort_date='2023-06-04',
+        dates='2022',
+        sort_date='2022-03-24',
         technologies=('Go',),
         url='https://github.com/sumeet/goylang',
         description_file='projects/goylang.md',
         demos=(),
-        listed=False,
         code_comparison=CodeComparison(
             source='projects/goylang/compiler.goy',
             generated='projects/goylang/compiler.go',
-            transcript='projects/goylang/self-compilation.txt',
         ),
     ),
     Project(

@@ -64,12 +64,7 @@ def render_code_comparison(example: CodeComparison):
                 <pre><code data-code-source="/{escape(path, quote=True)}">{highlight_source(source, GOYLANG_TOKENS)}</code></pre>
             </div>
         </figure>''')
-    transcript = escape(Path(example.transcript).read_text())
-    return f'''<div class="project-pad pad-columns project-code-comparison">{''.join(panes)}</div>
-        <figure class="compiler-transcript">
-            <figcaption class="comparison-label quiet">Compiling itself</figcaption>
-            <pre tabindex="0" aria-label="Recorded self-compilation commands and output"><code>{transcript}</code></pre>
-        </figure>'''
+    return f'''<div class="project-pad pad-columns project-code-comparison">{''.join(panes)}</div>'''
 
 
 def render_code_examples(project: Project):
