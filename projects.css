@@ -123,9 +123,19 @@
     padding: .3em .7em;
     background: none;
     font: inherit;
+    text-align: start;
     white-space: nowrap;
     flex: none;
     cursor: pointer;
+}
+
+/* Reserve each label's bold width even while another puzzle is selected. */
+.projects .project-example-tabs button::after {
+    content: attr(data-label);
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-weight: bold;
 }
 
 .projects .project-example-tabs button[aria-selected="true"] {
@@ -254,6 +264,57 @@
     margin-top: 1.25em;
 }
 
+.projects .source-files {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.projects .source-files figure {
+    margin: 0;
+    min-width: 0;
+}
+
+.projects .source-files pre {
+    margin: 0;
+    padding: var(--pad-padding-y) var(--pad-padding-x);
+    height: min(25rem, 65vh);
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+.projects .source-files pre, .projects .source-files code {
+    font: var(--pad-font);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    tab-size: 4;
+}
+
+.projects .source-files button {
+    appearance: none;
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #bcc7d2;
+    text-underline-offset: .17em;
+}
+
+.projects .source-files button:hover, .projects .source-files button:focus-visible {
+    color: var(--pad-pattern);
+    text-decoration-color: currentColor;
+}
+
+@media (max-width: 680px) {
+    .projects .source-files { grid-template-columns: minmax(0, 1fr); }
+    .projects .source-files pre { height: min(18rem, 55vh); }
+}
+
+.projects .syntax-function { color: var(--pad-pattern); }
 .projects .syntax-keyword { color: var(--pad-keyword); }
 .projects .syntax-number { color: var(--pad-number); }
 .projects .syntax-hardware { color: var(--pad-hardware); }
@@ -426,11 +487,11 @@
     }
 
     .projects .project-example-tabs button {
-        padding-inline: .6em;
+        padding-inline: .35em;
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 375px) {
     .projects .project-example-tabs {
         font-size: 12px;
         gap: 2px;

@@ -8,6 +8,7 @@ from markdown import markdown
 from page_template import asset_url, render_page
 from project_catalog import PROJECTS, Demo, Presentation, Project
 from code_examples import render_code_comparison, render_code_examples, render_code_taste
+from rust_sources import render_rust_sources
 
 
 def render_demo(demo: Demo):
@@ -64,6 +65,8 @@ def render_project(project: Project):
         media = render_code_examples(project)
     if project.code_comparison:
         media = render_code_comparison(project.code_comparison)
+    if project.rust_sources:
+        media = render_rust_sources(project)
     if project.tastes:
         cards = [render_code_taste(example) for example in project.tastes]
         if presentation:
@@ -89,8 +92,9 @@ def render_project(project: Project):
 
 
 def render_html():
+    listed = (project for project in PROJECTS if project.listed)
     projects = '\n'.join(render_project(project) for project in
-                         sorted(PROJECTS, key=lambda project: project.sort_key, reverse=True))
+                         sorted(listed, key=lambda project: project.sort_key, reverse=True))
     extra_head = f"""
         <base target="_blank">
         <link rel="stylesheet" href="{asset_url('pads.css')}">

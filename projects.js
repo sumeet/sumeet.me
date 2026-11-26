@@ -53,6 +53,27 @@ const stopOffscreen = new IntersectionObserver((entries) => {
 });
 playgrounds.forEach((frame) => stopOffscreen.observe(frame));
 
+document.querySelectorAll('.source-files').forEach((files) => {
+    function showDefinition(target) {
+        const pad = target.closest('pre');
+        const inset = pad.clientTop + parseFloat(getComputedStyle(pad).paddingTop);
+        pad.scrollTop += target.getBoundingClientRect().top - pad.getBoundingClientRect().top - inset;
+    }
+
+    const entry = files.querySelector('[data-source-entry]');
+    if (entry) showDefinition(entry);
+
+    files.addEventListener('click', (event) => {
+        const button = event.target.closest('button[aria-controls]');
+        if (!button) return;
+        const target = document.getElementById(button.getAttribute('aria-controls'));
+        showDefinition(target);
+        target.focus({preventScroll: true});
+        const rect = target.getBoundingClientRect();
+        if (rect.top < 0 || rect.bottom > innerHeight) target.scrollIntoView({block: 'nearest'});
+    });
+});
+
 document.querySelectorAll('.project-examples').forEach((examples) => {
     const tabs = [...examples.querySelectorAll('[role="tab"]')];
     const panels = [...examples.querySelectorAll('[role="tabpanel"]')];

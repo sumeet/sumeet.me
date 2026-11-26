@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>nn.h.rs · training preview</title>
+        <link rel="stylesheet" href="/style.css">
+
+        <base target="_blank">
+        <link rel="stylesheet" href="/pads.css">
+        <link rel="stylesheet" href="/projects.css">
+
+
+
+<style>
+#container { padding-top:24px; }
+.demo-pair { display:grid; grid-template-columns:minmax(315px,.8fr) minmax(0,1.2fr); gap:24px; max-width:890px; align-items:start; }
+.replay-panel { padding:16px 8px; --muted-foreground:#636970; }
+#nn-h-training-replay { max-width:450px; font-size:15px; }
+#nn-h-training-replay button { font:inherit; color:inherit; border:1px solid #ced4dd; padding:4px 10px; background:#f8f9fa; border-radius:4px; cursor:pointer; }
+#nn-h-training-replay .sr-only { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+.forward { margin:14px 0; max-width:720px; }
+.forward summary { color:#62686e; cursor:pointer; width:fit-content; }
+.forward pre { padding:var(--pad-padding-y) var(--pad-padding-x); overflow:auto; }
+.forward code { font:var(--pad-font); }
+@media(max-width:700px){ .demo-pair{grid-template-columns:minmax(0,1fr);gap:16px;} .replay-panel{grid-row:1;padding:0 0 4px;} }
+</style></head><body class="projects"><main id="container"><article class="project" id="nn-h">
+        <header class="box project-heading">
+            <h2 class="project-title"><a href="https://github.com/sumeet/nn-h">nn.h.rs</a></h2>
+            <p class="project-meta quiet">from <span class="project-date loud">2023</span> using <span class="loud">Rust</span></p>
+        </header>
+        <div class="project-copy"><p>Based on <a href="https://www.youtube.com/playlist?list=PLpM-Dvs8t0VZPZKggcql-MmjaBdZKeDMw">the excellent nn.h video series by Tsoding</a>, I coded a minimal neural network that runs on the CPU in Rust, and expanded it to train on the <a href="https://en.wikipedia.org/wiki/MNIST_database">MNIST dataset</a> and recognize handwriting.</p></div>
+        <div class="demo-pair"><iframe class="project-playground" src="/projects/nn-h/index.html"
+            title="nn.h.rs interactive handwriting recognition demo"
+            loading="lazy" allow="autoplay" height="302"></iframe><div class="replay-panel"><section id="nn-h-training-replay" aria-label="Handwriting predictions during training">
+  <div class="digit-grid">
+    <span>Handwriting</span>
+    <span class="ink" role="img" aria-label="Handwritten seven" style="--glyph:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAABJ0lEQVR42u2Uvy5EQRTGf5dVSDRWSBSWRKLQyCYk/keiI6r1Cquh03sAD7BvwCPoFCqFVWyB+LMiS4RIEBRX1s6nUdx7987euaJ0ppn5zvnNl8yZHE/8Ltr4B/8ezIROqxS5x2eHB65ag16oj9cM/ezeOYlU3rFN2eZYZIxTRsmzwCS3DADwxRP9QC0Iepaf002eMhMA+FxwRpYNSoEKuayCGqooG9RcsD49SiqEVZd2rNPLC+cRNdFvRp8ymo/qyY5LdLDPYZOe4NepY/mabs4kgVsy2ovLtMaWVderptKCParKaDc+a8fadSSjSw2nBUdkZLRiy9uwQd3IaFOeDbT1cY0ccIB9esbeN6c3GRmN258u3nGWLqDKh+voCEaFRZ5dR0eK+AbPwnKbSAAIIAAAAABJRU5ErkJggg==)"></span>
+    <span class="ink" role="img" aria-label="Handwritten two" style="--glyph:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAABPUlEQVR42tWUPUsDQRCGn5MkoATEWEgaFSwFq/Ri70cj+DsEP+B6rdTWTgurIIZgbyFI0ohoQIRUdlE7QZLDc3xtQoxkN5wWAW+a2Zl5dl6GvQnE374hBg2mnNENhpljFTikyomzRr1WlHVZXZOOGvzYvQ5UlskUJgELepeppmllhTK6kWkvCbikWDXl26dQkUwLyaROKdfx72TJwW/bVEumikZ+By6qJVND8+68/wEUyABFLj15T7+ymjIdK+tT5A7n9SLTs2b8E3CHKzKZ9vsMzgkuK5Lpwi/TPZxxQtLALW99f4+eu3ZlMp317+eSGslknUfntZRHSI647b0Sk2YUGGMdAGObpg+sdbxTGkyw9iP7xE7Qs6xKrDiv+uATOOcauKIaOLbcFmkAZtt9jngESjx0FwX/Zz0OHvwC3ELA5KXgHb0AAAAASUVORK5CYII=)"></span>
+    <span class="ink" role="img" aria-label="Handwritten one" style="--glyph:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAAAyElEQVR42uWUsQrBURjFf0jpbzNgY2ISRoMUm8kjeAEv4gG8g5K8gkVSMrJZKCVZKIv/8QL3Xt07cu92T6fvd/o6NyHCTpIfMlaIGYUYm8ScQ4wNnswN73Lfmh6amJRvE6tETI3Kl4kbHZU1KW5bWbEOZs2N2gGuIXusAWOL5gBt6aatMv6oPXIcePmj1hEzq2oFLeqivT2IfeKQPOuQdpSAuyOIFeakWF1/1DaFsCIPSLFj6WuM6AMz3r4Z01ppochVgMQf/KsfPzzk8TEKLrEAAAAASUVORK5CYII=)"></span>
+    <span class="ink" role="img" aria-label="Handwritten zero" style="--glyph:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAABLklEQVR42uWUsUoDQRCG55bYaJu0nhDEBxBi5aU0KQRfQ0QhbxBLQUQIWPsCWqbSRhu1sxIlsRA5wdZyWT6LrGHvsnsbLPWm+Zm973Zu559NkN89Sv4AuCRnYuRB0sA6oVhFozHs+ddDOzbkvLrUmjd7IDvSsjoTJY9yM1+pBm1jokasl9/xYUPA2Pjk1aoo2GY83XHANhl9NJrdanCFD1vgiCMWEYSUHM0XPRbC4E8Trqg72X37sWYMvGe5kE25K4PK4yUlG/JWyCWiRImSw3A7jtHomQObo9TnGbBB2x5Y7v5AHDy1rRmz6eZrkekZyppVT3JbZbkXDIYuXd4xGMdDEef0HIe6ahADJy5xwZxrmtZDlV7NOCmAgUH2j1WHSzQXbNEpeWgayT+4V78BmSIkbXoSIhYAAAAASUVORK5CYII=)"></span>
+    <span class="ink" role="img" aria-label="Handwritten four" style="--glyph:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAABLElEQVR42uWUv0oDQRCHfyeRGBWEA21EFK4ymELBwlILBQsb7XwDLXwEOxvRVxC7KHZiKfgAaSQ2FoJWXpFKkIju8dmkcGcvd5JKcKbZ/djfzOy/idBgNqT/KlzSsyHrmvmNcENVQ7Z0XC6saDNgLdU1ViZc1YrODItV16hHsN6gwyPjht7hmPxJQmGTLsuGxUBWLNzhjXYQ7ISMW4aLhBc49gybI+WTNZ/6SyZ4wQX5jnBhFf6pVjWtZnDKiaSHgHpxarS4J/bYFBkZ+zZjxYvS1ZO2daPT3nxBiWaFJIozinkuecf1POWVLxyOms0Y5XSARSW90ZWkc+1KprLcl2P9EIejUbzHPIsUSWqHP6HMEIN1gBFJH30CFnpKh4OQlwuv7Svtfx1/tD1+A3hpViFw/MlmAAAAAElFTkSuQmCC)"></span>
+    <span class="ink" role="img" aria-label="Handwritten one" style="--glyph:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAQAAADYBBcfAAAA20lEQVR42u2UMWpCQRRFj98ESf1LLV1Amt9ISClYpHAdbiGbSOUCLKzTmtZOSGEtBGKrAbuPmnftdd6TSSdkpnuHw70MM9MQf1sF/yK8YIxoXswV71JrmUwP5+Ra4jNtYEqdl9jSQibT4JLFYiWTaZ9icdUhALMkCxPnMtV6TLFI68lk2qZpVLUCYOzQIHEi0486aeprTzrK9OVxv2pJAXy4/ErRyuOe1tFRpqV/Al7VHgXwnv+sSmDDW77YB77Z5Yr3dIGaQ65oLIBVdP/vktNfXhGfkdi4nQ/5BH/8KuP2WWY0AAAAAElFTkSuQmCC)"></span>
+    <span>Prediction</span>
+    <span data-guess>8</span><span data-guess>8</span><span data-guess>8</span>
+    <span data-guess>8</span><span data-guess>8</span><span data-guess>3</span>
+  </div>
+  <div class="run-info"><span data-stage>Before training</span><span data-score>3 of 100 test digits correct</span></div>
+  <button type="button" class="btn" data-play>Replay training</button>
+  <span class="sr-only" role="status" data-announcement></span>
+</section>
+<style>
+  #nn-h-training-replay { display:grid; gap:1.15em; align-content:start; }
+  #nn-h-training-replay .digit-grid { display:grid; grid-template-columns:max-content repeat(6,minmax(0,1fr)); gap:.55em .25em; align-items:center; }
+  #nn-h-training-replay .digit-grid > :first-child, #nn-h-training-replay .digit-grid > :nth-child(8) { padding-right:.45em; }
+  #nn-h-training-replay .ink { justify-self:center; width:min(100%,3em); aspect-ratio:1; background:currentColor; mask:var(--glyph) center / contain no-repeat; }
+  #nn-h-training-replay [data-guess] { text-align:center; font-family:monospace; font-variant-numeric:tabular-nums; }
+  #nn-h-training-replay .run-info { display:flex; align-items:baseline; flex-wrap:wrap; gap:.25em 1em; font-variant-numeric:tabular-nums; }
+  #nn-h-training-replay [data-score] { color:var(--muted-foreground,inherit); }
+  #nn-h-training-replay button { justify-self:start; }
+</style>
+<script>
+(() => {
+  const root = document.getElementById('nn-h-training-replay');
+  const stages = [
+    { label:'Before training', correct:3, guesses:[8,8,8,8,8,3] },
+    { label:'After 50 batches', correct:48, guesses:[3,3,1,0,4,1] },
+    { label:'After 200 batches', correct:78, guesses:[7,2,1,0,4,1] }
+  ];
+  const digits = [...root.querySelectorAll('[data-guess]')];
+  const play = root.querySelector('[data-play]');
+  let stage = 0;
+  let timer;
+  function draw() {
+    const point = stages[stage];
+    digits.forEach((digit,i) => { digit.textContent = point.guesses[i]; });
+    root.querySelector('[data-stage]').textContent = point.label;
+    root.querySelector('[data-score]').textContent = point.correct + ' of 100 test digits correct';
+    root.querySelector('[data-announcement]').textContent = point.label + '. Predictions: ' + point.guesses.join(', ');
+  }
+  function stop() {
+    clearTimeout(timer);
+    timer = undefined;
+    play.textContent = stage === 1 ? 'Continue replay' : 'Replay training';
+  }
+  function tick() {
+    stage += 1;
+    draw();
+    if (stage === stages.length - 1) {
+      stop();
+      window.openai?.setWidgetState?.({privateContent:{completed:true}})?.catch(() => {});
+    } else {
+      timer = setTimeout(tick, 1700);
+    }
+  }
+  function restore(state) {
+    if (!state?.privateContent?.completed) return;
+    stage = stages.length - 1;
+    stop();
+    draw();
+  }
+  restore(window.openai?.widgetState);
+  window.addEventListener('openai:set_globals', event => restore(event.detail?.globals?.widgetState));
+  play.addEventListener('click', () => {
+    if (timer !== undefined) { stop(); return; }
+    if (stage === stages.length - 1) stage = 0;
+    draw();
+    play.textContent = 'Pause replay';
+    timer = setTimeout(tick, 1150);
+  });
+})();
+</script>
+</div></div><details class="forward"><summary>Source for Feed forward</summary><pre class="project-pad"><code><span class="syntax-keyword">pub</span>(<span class="syntax-keyword">crate</span>) <span class="syntax-keyword">fn</span> <span class="syntax-function">forward</span>(&amp;<span class="syntax-keyword">mut</span> self) {
+    <span class="syntax-keyword">for</span> i <span class="syntax-keyword">in</span> <span class="syntax-number">0</span>..LAYERS {
+        <span class="syntax-keyword">let</span> (prev_layer, next_layer) = self.activations.split_at_mut(i + <span class="syntax-number">1</span>);
+        <span class="syntax-keyword">let</span> next_activation = &amp;<span class="syntax-keyword">mut</span> next_layer[<span class="syntax-number">0</span>];
+        <span class="syntax-keyword">let</span> activation = &amp;prev_layer[i];
+        <span class="syntax-keyword">let</span> weight = &amp;self.weights[i];
+        <span class="syntax-keyword">let</span> bias = &amp;self.biases[i];
+        next_activation.dot_from(activation, weight);
+        next_activation.add(bias);
+        <span class="syntax-keyword">if</span> i &lt; LAYERS - <span class="syntax-number">1</span> {
+            next_activation.relu();
+        } <span class="syntax-keyword">else</span> {
+            <span class="syntax-comment">// activation for MNIST is softmax for the output layer
+</span>            next_activation.softmax();
+        }
+    }
+}</code></pre></details>
+
+    </article></main></body></html>

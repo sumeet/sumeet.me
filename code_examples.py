@@ -34,8 +34,9 @@ def highlight_source(source, tokens=TOKENS):
 
 
 def example_tab(tab_id, panel_id, title, selected):
+    label = escape(title)
     return f'''<button type="button" role="tab" id="{tab_id}" aria-controls="{panel_id}"
-        aria-selected="{str(selected).lower()}" tabindex="{0 if selected else -1}">{escape(title)}</button>'''
+        aria-selected="{str(selected).lower()}" tabindex="{0 if selected else -1}" data-label="{label}">{label}</button>'''
 
 
 def render_code_taste(example: CodeTaste):

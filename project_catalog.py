@@ -64,6 +64,8 @@ class Project:
     default_example: str | None = None
     code_comparison: CodeComparison | None = None
     tastes: tuple[CodeTaste, ...] = ()
+    rust_sources: tuple[str, ...] = ()
+    listed: bool = True
 
     @property
     def latest_year(self):
@@ -86,6 +88,7 @@ PROJECTS = (
         url='https://github.com/sumeet/stdless',
         description_file='projects/stdless.md',
         demos=(),
+        rust_sources=('projects/stdless/main.rs', 'projects/stdless/linux.rs'),
     ),
     Project(
         slug='goylang',
@@ -96,6 +99,7 @@ PROJECTS = (
         url='https://github.com/sumeet/goylang',
         description_file='projects/goylang.md',
         demos=(),
+        listed=False,
         code_comparison=CodeComparison(
             source='projects/goylang/compiler.goy',
             generated='projects/goylang/compiler.go',
@@ -170,6 +174,7 @@ PROJECTS = (
         url='https://github.com/sumeet/nn-h',
         description_file='projects/nn-h.md',
         demos=(),
+        listed=False,
         playground=Playground(
             source='projects/nn-h/index.html',
             description='nn.h.rs interactive handwriting recognition demo',
