@@ -175,15 +175,29 @@
 }
 
 .projects .project-code-comparison {
-    max-width: 890px;
+    grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
 }
 
-.projects .project-code-comparison .comparison-label {
-    padding: var(--pad-padding-y) var(--pad-padding-x) 0;
+.projects .project-code-comparison .pad-output {
+    border-left: var(--pad-border);
 }
 
 .projects .project-code-comparison .example-code-scroll {
-    max-height: 32em;
+    max-height: none;
+}
+
+.projects .project-code-comparison .pad-output .example-code-scroll {
+    box-sizing: content-box;
+    font: var(--pad-font);
+    max-height: 16lh;
+}
+
+@media (max-width: 720px) {
+    .projects .project-code-comparison { grid-template-columns: minmax(0, 1fr); }
+    .projects .project-code-comparison .pad-output {
+        border-left: 0;
+        border-top: var(--pad-border);
+    }
 }
 
 .projects .example-code-scroll {

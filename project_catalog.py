@@ -35,6 +35,8 @@ class CodeExample:
 
 @dataclass(frozen=True)
 class CodeComparison:
+    slug: str
+    title: str
     source: str
     generated: str
 
@@ -59,9 +61,8 @@ class Project:
     presentation: Presentation | None = None
     playground: Playground | None = None
     sort_date: str | None = None
-    examples: tuple[CodeExample, ...] = ()
+    examples: tuple[CodeExample | CodeComparison, ...] = ()
     default_example: str | None = None
-    code_comparison: CodeComparison | None = None
     tastes: tuple[CodeTaste, ...] = ()
     rust_sources: tuple[str, ...] = ()
     listed: bool = True
@@ -98,9 +99,15 @@ PROJECTS = (
         url='https://github.com/sumeet/goylang',
         description_file='projects/goylang.md',
         demos=(),
-        code_comparison=CodeComparison(
-            source='projects/goylang/compiler.goy',
-            generated='projects/goylang/compiler.go',
+        examples=(
+            CodeComparison(
+                'sum-types', 'Sum types',
+                'projects/goylang/declaration.goy', 'projects/goylang/declaration.go',
+            ),
+            CodeComparison(
+                'pattern-matching', 'Pattern matching',
+                'projects/goylang/compiler.goy', 'projects/goylang/compiler.go',
+            ),
         ),
     ),
     Project(

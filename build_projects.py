@@ -7,7 +7,7 @@ from markdown import markdown
 
 from page_template import asset_url, render_page
 from project_catalog import PROJECTS, Demo, Presentation, Project
-from code_examples import render_code_comparison, render_code_examples, render_code_taste
+from code_examples import render_code_examples, render_code_taste
 from rust_sources import render_rust_sources
 
 
@@ -63,8 +63,6 @@ def render_project(project: Project):
             loading="lazy" allow="autoplay" height="{playground.height}"></iframe>'''
     if project.examples:
         media = render_code_examples(project)
-    if project.code_comparison:
-        media = render_code_comparison(project.code_comparison)
     if project.rust_sources:
         media = render_rust_sources(project)
     if project.tastes:

@@ -1,0 +1,6 @@
+enum Declaration {
+    Enum(Enum),
+    Import(Import),
+    Struct(Struct),
+    Function(Function),
+}
