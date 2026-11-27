@@ -144,8 +144,9 @@
 }
 
 .projects .project-example-tabs button:focus-visible {
-    outline: 2px solid #8199b8;
-    outline-offset: 4px;
+    outline: none;
+    text-decoration: underline;
+    text-underline-offset: .15em;
 }
 
 .projects .example-code-scroll:focus-visible {
